@@ -21,6 +21,6 @@ for (a = 48; a <= 56; a++)
 		putchar(32);
 	}
 }
-//putchar(10);
+putchar(10);
 return (0);
 }
