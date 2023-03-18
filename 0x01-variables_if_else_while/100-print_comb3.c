@@ -16,7 +16,7 @@ for (a = 48; a <= 57; a++)
 	{
 		putchar(a);
 		putchar(b);
-		if (a < 57)
+		if (b < 57)
 		{
 			putchar(44);
 			putchar(32);
