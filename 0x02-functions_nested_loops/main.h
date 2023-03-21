@@ -3,8 +3,8 @@
 #include <stdio.h>
 /*myfuctions*/
 /*print character putchar*/
-void pchar (void);
+void _putchar(char c);
 
 /*print alphabet*/
-//void print_alphabet(void);
+void print_alphabet(void);
 #endif
