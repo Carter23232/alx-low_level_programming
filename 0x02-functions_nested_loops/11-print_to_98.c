@@ -21,6 +21,8 @@ int num, fdig, ldig;
 			fdig = (num - ldig) / 10;
 			_putchar(fdig + '0');
 			_putchar(ldig + '0');
+			_putchar(',');
+			_putchar(' ');
 		}
 	}
 	putchar('\n');
