@@ -9,11 +9,11 @@
 /* betty style doc for function main goes there */
 int main(void)
 {
-	char *msg = "_putchar\n";
-	unsigned long i;
-	for (i = 0; i < strlen(msg); i++)
-	{
-		_putchar(msg[i]);
-	}
-	return (0);
+char *msg = "_putchar\n";
+unsigned long i;
+for (i = 0; i < strlen(msg); i++)
+{
+	_putchar(msg[i]);
+}
+return (0);
 }
