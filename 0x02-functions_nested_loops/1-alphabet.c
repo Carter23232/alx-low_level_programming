@@ -1,4 +1,5 @@
 #include "main.h"
+/* print alphaabet */
 void print_alphabet(void)
 {
 unsigned long i;
