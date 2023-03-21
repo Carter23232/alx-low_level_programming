@@ -23,4 +23,5 @@ int num, fdig, ldig;
 			_putchar(ldig + '0');
 		}
 	}
+	putchar('\n');
 }
