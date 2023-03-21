@@ -6,24 +6,36 @@
 */
 void print_to_98(int n)
 {
-int num, fdig, ldig;
-	for (num = n; num <= 98; num++)
+	if (n <= 98)
 	{
-		if (num < 9)
+		for (; n <= 98; n++)
 		{
-			_putchar(num + '0');
-			_putchar(',');
-			_putchar(' ');
-		}
-		else
-		{
-			ldig = num % 10;
-			fdig = (num - ldig) / 10;
-			_putchar(fdig + '0');
-			_putchar(ldig + '0');
-			_putchar(',');
-			_putchar(' ');
+			if (n == 98)
+			{
+				printf("%d", n);
+				printf("\n");
+				break;
+			}
+			else
+			{
+				printf("%d, ", n);
+			}
 		}
 	}
-	putchar('\n');
+	else
+	{
+		for (; n >= 98; n--)
+		{
+			if (n == 98)
+			{
+				printf("%d", n);
+				printf("\n");
+				break;
+			}
+			else
+			{
+				printf("%d, ", n);
+			}
+		}
+	}
 }
