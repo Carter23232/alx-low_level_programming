@@ -15,5 +15,6 @@ else
 {
 	val *= -1;
 	_putchar(val + '0');
-	return (val);
+}
+return (val);
 }
