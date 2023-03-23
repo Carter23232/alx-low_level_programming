@@ -18,7 +18,7 @@ if (size > 0)
 		{
 			_putchar('#');
 		}
-		if (i != 0)
+		if (i != size)
 		{
 			_putchar('\n');
 		}
