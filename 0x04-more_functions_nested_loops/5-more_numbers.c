@@ -5,31 +5,16 @@
 */
 void more_numbers(void)
 {
-int i, j, k;
-char output[500];
-int index = 0;
+int i, k;
 for (i = 0; i < 10; i++)
 {
-	for (j = 0; j <= 1; j++)
+	for (k = 0; k <= 14; k++)
 	{
-		for (k = 0; k < 9; k++)
+		if (k > 9)
 		{
-			if (j == 1 && k <= 4)
-			{
-				output[index++] = j + '0';
-				output[index++] = k + '0';
-			}
-			else if (j == 0 && k <= 9)
-			{
-				output[index++] = k + '0';
-			}
+			_putchar((k / 10) + '0'); /*first digit only*/
 		}
+		_putchar((k % 10) + '0'); /*print last digit only*/
 	}
-	output[index++] = '\n';
-
-}
-for (i = 0; i < index; i++)
-{
-	_putchar(output[i]);
 }
 }
