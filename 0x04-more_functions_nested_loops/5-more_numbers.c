@@ -16,5 +16,6 @@ for (i = 0; i < 10; i++)
 		}
 		_putchar((k % 10) + '0'); /*print last digit only*/
 	}
+	_putchar('\n');
 }
 }
