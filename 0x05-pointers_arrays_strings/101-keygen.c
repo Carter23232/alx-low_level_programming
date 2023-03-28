@@ -19,7 +19,7 @@ char *generate_random_string(int sum) {
 }
 
 int main() {
-    int sum = 234;  // example sum
+	int sum = 234;
     char *str = generate_random_string(sum);
     printf("%s\n", str);
     free(str);
