@@ -11,13 +11,13 @@
 #define MAX_LEN 100
 
 int main() {
-    int target_sum = 234;  // example sum
+    int target_sum = 234;
     char *result_str = malloc(sizeof(char) * (MAX_LEN + 1));
     int len = 0, num = 0;
     srand(time(NULL));
     while (target_sum > 0 && len < MAX_LEN) {
-        num = rand() % 79 + 48;  // generate random number in ASCII range [48, 126], excluding control characters
-        if (num > target_sum) continue;  // skip if number is greater than remaining sum
+        num = rand() % 79 + 48;
+        if (num > target_sum) continue;
         result_str[len++] = num;
         target_sum -= num;
     }
