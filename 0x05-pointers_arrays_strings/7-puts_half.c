@@ -15,17 +15,17 @@ while (str[j] != '\0')
 }
 	if (j % 2 == 1)
 	{
-		j = (j - 1) / 2;
-		j += 1;
+		k = (j - 1) / 2;
+		k += 1;
 	}
 	else
 	{
-		j = j / 2;
+		k = j / 2;
 	}
 
 	for (; j < j; j++)
 	{
-		_putchar(str[j]);
+		_putchar(str[k]);
 	}
 _putchar('\n');
 }
