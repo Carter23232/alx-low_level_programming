@@ -8,7 +8,7 @@
  */
 void print_rev(char *s)
 {
-	int counter = 0, i;
+int counter = 0, i;
 	while (s[counter] != '\0')
 	{
 		counter++;
