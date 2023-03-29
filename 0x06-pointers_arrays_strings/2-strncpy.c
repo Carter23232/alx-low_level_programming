@@ -24,6 +24,7 @@ else
 	{
 		dest[i] = src[j];
 	}
+	dest[i] = src[j];
 }
 return (dest);
 }
