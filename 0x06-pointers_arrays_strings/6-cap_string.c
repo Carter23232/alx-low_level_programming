@@ -24,8 +24,8 @@ char *cap_string(char *a)
 				if (a[j + 1] >= 97 && a[j + 1] <= 122)
 				{
 					a[j + 1] -= 32;
+					j++;
 				}
-				j++;
 			}
 		}
 	}
