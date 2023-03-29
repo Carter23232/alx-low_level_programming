@@ -21,7 +21,7 @@ int _strcmp(char *s1, char *s2)
 	}
 	if (s1sum > s2sum)
 	{
-		return (-1);
+		return (s1sum - s2sum);
 	}
 	else if (s1sum == s2sum)
 	{
@@ -29,6 +29,6 @@ int _strcmp(char *s1, char *s2)
 	}
 	else
 	{
-		return (1);
+		return (s1sum - s2sum);
 	}
 }
