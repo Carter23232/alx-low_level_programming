@@ -11,7 +11,7 @@
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
     int carry = 0, index = 0;
-    char *s1 = n1 + _strlen(n1) - 1, *s2 = n2 + _strlen(n2) - 1;
+    char *s1 = n1 + strlen(n1) - 1, *s2 = n2 + strlen(n2) - 1;
 
     while (s2 >= n2 && s1 >= n1)
     {
