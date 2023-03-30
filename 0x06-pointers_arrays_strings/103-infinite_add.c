@@ -7,22 +7,40 @@
  *
  * Return: 0 if buffer too small to store result, else return pointer to buffer
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r) {
-    int l1 = strlen(n1), l2 = strlen(n2);
-    if (l1 + l2 + 1 > size_r) return 0;
-    int carry = 0, i = 0;
-    for (int j = l1 - 1, k = l2 - 1; j >= 0 || k >= 0 || carry; j--, k--, i++) {
-        int a = j < 0 ? 0 : n1[j] - '0';
-        int b = k < 0 ? 0 : n2[k] - '0';
-        int sum = a + b + carry;
-        r[i] = sum % 10 + '0';
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
+{
+	int carry = 0, sum, len1, len2, i;
+    char *ptr1 = n1, *ptr2 = n2, *res_ptr = r + size_r - 1;
+    
+    // Calculate lengths of input strings
+    for (len1 = 0; n1[len1]; len1++);
+    for (len2 = 0; n2[len2]; len2++);
+    
+    // Iterate over the strings in reverse
+    while (len1 || len2 || carry) {
+        sum = carry;
+        if (len1) {
+            sum += ptr1[--len1] - '0';
+            ptr1[len1] = sum % 10 + '0';
+        }
+        if (len2) {
+            sum += ptr2[--len2] - '0';
+            ptr2[len2] = sum % 10 + '0';
+        }
+        if (res_ptr == r) {
+            return (0);
+        }
+        *--res_ptr = sum % 10 + '0';
         carry = sum / 10;
     }
-    r[i] = '\0';
-    for (int j = 0, k = i - 1; j < k; j++, k--) {
-        char tmp = r[j];
-        r[j] = r[k];
-        r[k] = tmp;
+    
+    for (i = 0; r[i] == '0' && i < size_r - 1; i++);
+    for (int j = 0; i < size_r; i++, j++) {
+        if (r[i] == '\0') {
+            r[j] = '\0';
+            break;
+        }
+        r[j] = r[i];
     }
-    return r;
+    return (r);
 }
