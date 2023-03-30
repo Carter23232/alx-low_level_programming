@@ -1,43 +1,66 @@
 /**
- * infinite_add - adds two integers stored as strings
+ * infinite_add - Add up two numbers stored in given char arrays
+ * @n1: The first number
+ * @n2: The second number
+ * @r: Pointer to the buffer to store result
+ * @size_r: The size of the buffer
  *
- * @n1: first integer string to add
- * @n2: second integer string to add
- * @r: array to store resulting string in
- * @size_r: size of array r
- *
- * Return: the summed string in r. If r is too small for the result,
- * return 0;
+ * Return: 0 if buffer too small to store result, else return pointer to buffer
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len1 = strlen(n1);
-	int len2 = strlen(n2);
-	int carry = 0;
-	int i = len1 - 1;
-	int j = len2 - 1;
-	int k = 0;
+	int l1, l2, tmpl, rl, i, sum, num1, num2, carry;
+	char tmp[10000];
 
-	while (i >= 0 || j >= 0 || carry != 0)
+	rl = i = l1 = l2 = sum = num1 = num2 = carry = 0;
+	while (n1[l1] != '\0')
+		l1++;
+	while (n2[l2] != '\0')
+		l2++;
+	if (l1 + 2 > size_r || l2 + 2 > size_r)
+		return (0);
+	l1--;
+	l2--;
+	while (i <= l1 || i <= l2)
 	{
-		int sum = carry;
-
-		if (i >= 0)
-			sum += n1[i--] - '0';
-		if (j >= 0)
-			sum += n2[j--] - '0';
-		if (k >= size_r)
-			return (0);
-		r[k++] = sum % 10 + '0';
-		carry = sum / 10;
+		num1 = num2 = 0;
+		if (i <= l1)
+			num1 = n1[l1 - i] - '0';
+		if (i <= l2 && (l2 - i) >= 0)
+			num2 = n2[l2 - i] - '0';
+		sum = num1 + num2 + carry;
+		if (sum >= 10)
+		{
+			carry = 1;
+			sum -= 10;
+		}
+		else
+			carry = 0;
+		r[i] = sum + '0';
+		i++;
+		rl++;
 	}
-	for (int i = 0, j = k - 1; i < j; i++, j--)
+	if (carry > 0)
 	{
-		char temp = r[i];
-
-		r[i] = r[j];
-		r[j] = temp;
+		r[i] = carry + '0';
+		r[i + 1] = '\0';
 	}
-	r[k] = '\0';
+	i = tmpl = 0;
+	while (i <= rl)
+	{
+		tmp[i] = r[rl - i];
+		tmpl++;
+		i++;
+	}
+	i = 0;
+	while (i < tmpl)
+	{
+		if (r[i] == '\0')
+		{
+			break;
+		}
+		r[i] = tmp[i];
+		i++;
+	}
 	return (r);
 }
