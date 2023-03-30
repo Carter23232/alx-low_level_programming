@@ -6,37 +6,55 @@
  * @r: Pointer to the buffer to store result
  * @size_r: The size of the buffer
  *
- * Return: 0 if buffer too small to store result, else return pointer to buffer
- */
+ * Return: 0 if buffer too small to store result, else r
+ **/
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len1 = strlen(n1);
-	int len2 = strlen(n2);
-	int carry = 0;
-	int i = len1 - 1;
-	int j = len2 - 1;
-	int k = 0;
+    int carry = 0, index = 0;
+    char *s1 = n1 + strlen(n1) - 1, *s2 = n2 + strlen(n2) - 1;
 
-	while (i >= 0 || j >= 0 || carry != 0)
-	{
-		int sum = carry;
+    while (s2 >= n2 && s1 >= n1) {
+        r[index] = (*s2 - '0') + (*s1 - '0') + carry;
+        carry = r[index] / 10;
+        r[index] %= 10;
+        s1--;
+        s2--;
+        index++;
+        if (index == size_r) return NULL;
+    }
 
-		if (i >= 0)
-			sum += n1[i--] - '0';
-		if (j >= 0)
-			sum += n2[j--] - '0';
-		if (k >= size_r)
-			return (0);
-		r[k++] = sum % 10 + '0';
-		carry = sum / 10;
-	}
-	for (int i = 0, j = k - 1; i < j; i++, j--)
-	{
-		char temp = r[i];
+    while (s1 >= n1) {
+        r[index] = (*s1 - '0') + carry;
+        carry = r[index] / 10;
+        r[index] %= 10;
+        s1--;
+        index++;
+        if (index == size_r) return NULL;
+    }
 
-		r[i] = r[j];
-		r[j] = temp;
-	}
-	r[k] = '\0';
-	return (r);
+    while (s2 >= n2) {
+        r[index] = (*s2 - '0') + carry;
+        carry = r[index] / 10;
+        r[index] %= 10;
+        s2--;
+        index++;
+        if (index == size_r) return NULL;
+    }
+
+    if (carry == 1) {
+        if (index == size_r) return NULL;
+        r[index] = 1;
+        index++;
+    }
+
+    r[index] = '\0';
+
+    for (int i = 0; i < index / 2; i++) {
+        char tmp = r[i];
+        r[i] = r[index - i - 1];
+        r[index - i - 1] = tmp;
+    }
+
+    return r;
 }
+
