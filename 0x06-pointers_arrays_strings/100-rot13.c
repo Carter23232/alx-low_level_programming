@@ -1,22 +1,30 @@
 #include "main.h"
 /**
   * rot13 - encode a string with rot13.
-  * @a: character to cahnge
+  * @s: character to cahnge
   *
   * Return: returns modified string
 */
-char *rot13(char *a)
+char *rot13(char *s)
 {
-	int i;
+	int a = 0;
 
-	for (i = 0; a[i] != '\0'; i++)
+	while (s[a])
 	{
-		if ((a[i] >= 65 && a[i] <= 90))
+		while ((s[a] >= 'a' && s[a] <= 'z') || (s[a] >= 'A' && s[a] <= 'Z'))
 		{
-			a[i] = ((a[i] - 65 + 13) % 26) + 65;
+			if ((s[a] > 'm' && s[a] <= 'z') || (s[a] > 'M' && s[a] <= 'Z'))
+			{
+				s[a] -= 13;
+				break;
+			}
+
+			s[a] += 13;
 			break;
 		}
-		a[i] = ((a[i] - 97 + 13) % 26) + 97;
+
+		a++;
 	}
-	return (a);
+
+	return (s);
 }
