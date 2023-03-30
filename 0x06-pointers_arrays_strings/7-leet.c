@@ -20,7 +20,6 @@ char *leet(char *a)
 			if (let[i] == a[j] || toupper(let[i]) == a[j])
 			{
 				a[j] = num[i];
-				j++;
 			}
 		}
 	}
