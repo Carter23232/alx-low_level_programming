@@ -10,7 +10,7 @@
 char *leet(char *a)
 {
 	char *let = "aeotl";
-	int num[] = {4, 3, 0, 7, 1};
+	char *num = "43071";
 	int i, j;
 
 	for (i = 0; i < (int)strlen(let); i++)
