@@ -1,66 +1,48 @@
 /**
- * infinite_add - Add up two numbers stored in given char arrays
- * @n1: The first number
- * @n2: The second number
- * @r: Pointer to the buffer to store result
- * @size_r: The size of the buffer
+ * infinite_add - adds two integers stored as strings
  *
- * Return: 0 if buffer too small to store result, else return pointer to buffer
+ * @n1: first integer string to add
+ * @n2: second integer string to add
+ * @r: array to store resulting string in
+ * @size_r: size of array r
+ *
+ * Return: the summed string in r. If r is too small for the result,
+ * return 0;
  */
+
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int l1, l2, tmpl, rl, i, sum, num1, num2, carry;
-	char tmp[10000];
+	int carry = 0, index = 0;
+	char *s1 = n1 + strlen(n1) - 1, *s2 = n2 + strlen(n2) - 1;
 
-	rl = i = l1 = l2 = sum = num1 = num2 = carry = 0;
-	while (n1[l1] != '\0')
-		l1++;
-	while (n2[l2] != '\0')
-		l2++;
-	if (l1 + 2 > size_r || l2 + 2 > size_r)
-		return (0);
-	l1--;
-	l2--;
-	while (i <= l1 || i <= l2)
+	while (s1 >= n1 || s2 >= n2)
 	{
-		num1 = num2 = 0;
-		if (i <= l1)
-			num1 = n1[l1 - i] - '0';
-		if (i <= l2 && (l2 - i) >= 0)
-			num2 = n2[l2 - i] - '0';
-		sum = num1 + num2 + carry;
-		if (sum >= 10)
-		{
-			carry = 1;
-			sum -= 10;
-		}
-		else
-			carry = 0;
-		r[i] = sum + '0';
-		i++;
-		rl++;
+		int sum = carry;
+
+		if (s1 >= n1)
+			sum += *s1-- - '0';
+		if (s2 >= n2)
+			sum += *s2-- - '0';
+		r[index++] = sum % 10 + '0';
+		carry = sum / 10;
+		if (index == size_r && (s1 >= n1 || s2 >= n2 || carry > 0))
+			return (0);
 	}
 	if (carry > 0)
 	{
-		r[i] = carry + '0';
-		r[i + 1] = '\0';
+		if (index < size_r - 1)
+			r[index++] = carry + '0';
+		else
+			return (0);
 	}
-	i = tmpl = 0;
-	while (i <= rl)
+	r[index] = '\0';
+	for (int i = 0, j = index - 1; i < j; i++, j--)
 	{
-		tmp[i] = r[rl - i];
-		tmpl++;
-		i++;
+		char temp = r[i];
+
+		r[i] = r[j];
+		r[j] = temp;
 	}
-	i = 0;
-	while (i < tmpl)
-	{
-		if (r[i] == '\0')
-		{
-			break;
-		}
-		r[i] = tmp[i];
-		i++;
-	}
+
 	return (r);
 }
