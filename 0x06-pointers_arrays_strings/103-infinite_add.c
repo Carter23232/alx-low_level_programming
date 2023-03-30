@@ -9,40 +9,39 @@
  * Return: the summed string in r. If r is too small for the result,
  * return 0;
  */
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int carry = 0, index = 0;
-	char *s1 = n1 + strlen(n1) - 1, *s2 = n2 + strlen(n2) - 1;
+    int len1 = strlen(n1);
+    int len2 = strlen(n2);
+    int carry = 0;
+    int i = len1 - 1;
+    int j = len2 - 1;
+    int k = 0;
 
-	while (s1 >= n1 || s2 >= n2)
-	{
-		int sum = carry;
+    // Iterate through the two input strings, adding their corresponding digits
+    // and any carry from the previous digit, and storing the result in the
+    // output buffer.
+    while (i >= 0 || j >= 0 || carry != 0)
+    {
+        int sum = carry;
+        if (i >= 0)
+            sum += n1[i--] - '0';
+        if (j >= 0)
+            sum += n2[j--] - '0';
+        if (k >= size_r)
+            return 0;
+        r[k++] = sum % 10 + '0';
+        carry = sum / 10;
+    }
 
-		if (s1 >= n1)
-			sum += *s1-- - '0';
-		if (s2 >= n2)
-			sum += *s2-- - '0';
-		r[index++] = sum % 10 + '0';
-		carry = sum / 10;
-		if (index == size_r && (s1 >= n1 || s2 >= n2 || carry > 0))
-			return (0);
-	}
-	if (carry > 0)
-	{
-		if (index < size_r - 1)
-			r[index++] = carry + '0';
-		else
-			return (0);
-	}
-	r[index] = '\0';
-	for (int i = 0, j = index - 1; i < j; i++, j--)
-	{
-		char temp = r[i];
+    
+    for (int i = 0, j = k - 1; i < j; i++, j--)
+    {
+        char temp = r[i];
+        r[i] = r[j];
+        r[j] = temp;
+    }
+    r[k] = '\0';
 
-		r[i] = r[j];
-		r[j] = temp;
-	}
-
-	return (r);
+    return r;
 }
