@@ -28,6 +28,13 @@ void print_number(int n)
 {
 	int counter = 0, number_dup = n, first_digit;
 
+	if (n == 0)
+	{
+		_putchar('0');
+		_putchar('\n');
+		return;
+	}
+
 	while ((number_dup /= 10))
 	{
 		counter++;
