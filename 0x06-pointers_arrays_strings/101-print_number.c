@@ -44,6 +44,6 @@ void print_number(int n)
 		counter--;
 		_putchar(first_digit + '0');
 	}
-	_putchar('\n');
+	
 }
 
