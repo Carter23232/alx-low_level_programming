@@ -1,11 +1,29 @@
 #include "main.h"
-#include <math.h>
+
+/**
+ * _pow - Power of a number
+ * @num: base
+ * @power: power
+ * Return: result
+ */
+
+double _pow(int num, int power)
+{
+	int i, result = 1;
+
+	for (i = 0; i < power; i++)
+	{
+		result *= num;
+	}
+	return (result);
+}
+
 /**
   * print_number - Prints any integer with putchar
   * @n: Number to prints
-  *
   * Return: Nothing
   */
+
 void print_number(int n)
 {
 	int counter = 0, number_dup = n, first_digit;
@@ -21,9 +39,10 @@ void print_number(int n)
 			n *= -1;
 			_putchar('-');
 		}
-		first_digit = n / (int)pow(10, counter);
+		first_digit = n / (int)_pow(10, counter);
 		first_digit %= 10;
 		counter--;
 		_putchar(first_digit + '0');
 	}
 }
+
