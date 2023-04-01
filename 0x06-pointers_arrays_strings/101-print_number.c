@@ -19,11 +19,11 @@ void print_number(int n)
 		if (n < 0)
 		{
 			n *= -1;
-			putchar('-');
+			_putchar('-');
 		}
 		first_digit = n / (int)pow(10, counter);
 		first_digit %= 10;
 		counter--;
-		putchar(first_digit + '0');
+		_putchar(first_digit + '0');
 	}
 }
