@@ -4,8 +4,11 @@
  * print_buffer - ...
  * @b: The ..
  * @size: The second number
+ *
+ *
+ *
+ *
  */
-
 void print_buffer(char *b, int size)
 {
 	int i, j;
@@ -17,13 +20,13 @@ void print_buffer(char *b, int size)
 		{
 			if (i + j < size)
 			{
-				printf("%02x", b[i + j]);
+				printf("%02x", *(b + i + j));
 			}
 			else
 			{
 				printf("  ");
 			}
-			if (((j + 1) % 2) == 0)
+			if (j % 2 != 0)
 			{
 				printf(" ");
 			}
@@ -32,20 +35,20 @@ void print_buffer(char *b, int size)
 		{
 			if (i + j < size)
 			{
-				if (b[i + j] >= 32 && b[i + j] <= 126)
+				if (isprint(*(b + i + j)))
 				{
-					printf("%c", b[i + j]);
+					printf("%c", *(b + i + j));
 				}
 				else
 				{
 					printf(".");
 				}
 			}
-			else
-			{
-				printf(" ");
-			}
 		}
+		printf("\n");
+	}
+	if (size <= 0)
+	{
 		printf("\n");
 	}
 }
