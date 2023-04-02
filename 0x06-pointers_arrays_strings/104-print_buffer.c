@@ -4,11 +4,8 @@
  * print_buffer - ...
  * @b: The ..
  * @size: The second number
- *
- *
- *
- *
  */
+
 void print_buffer(char *b, int size)
 {
 	int i, j;
@@ -16,39 +13,38 @@ void print_buffer(char *b, int size)
 	for (i = 0; i < size; i += 10)
 	{
 		printf("%08x: ", i);
-		for (j = 0; j < 10; j++)
+		for (j = i; j < i + 10; j++)
 		{
-			if (i + j < size)
+			if (j < size)
 			{
-				printf("%02x", *(b + i + j));
+				printf("%02x", b[j]);
 			}
 			else
 			{
 				printf("  ");
 			}
-			if (j % 2 != 0)
+			if (((j + 1) % 2) == 0)
 			{
 				printf(" ");
 			}
 		}
-		for (j = 0; j < 10; j++)
+		for (j = i; j < i + 10; j++)
 		{
-			if (i + j < size)
+			if (b[j] >= 32 && b[j] <= 126)
 			{
-				if (isprint(*(b + i + j)))
+				if (j < size)
 				{
-					printf("%c", *(b + i + j));
+					printf("%c", b[j]);
 				}
-				else
+			}
+			else
+			{
+				if (j < size)
 				{
 					printf(".");
 				}
 			}
 		}
-		printf("\n");
-	}
-	if (size <= 0)
-	{
 		printf("\n");
 	}
 }
