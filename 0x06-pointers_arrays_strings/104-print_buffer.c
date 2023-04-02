@@ -30,16 +30,13 @@ void print_buffer(char *b, int size)
 		}
 		for (j = i; j < i + 10; j++)
 		{
-			if (b[j] >= 32 && b[j] <= 126)
+			if (j < size)
 			{
-				if (j < size)
+				if (b[j] >= 32 && b[j] <= 126)
 				{
 					printf("%c", b[j]);
 				}
-			}
-			else
-			{
-				if (j < size)
+				else
 				{
 					printf(".");
 				}
