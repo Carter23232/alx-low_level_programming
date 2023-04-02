@@ -1,24 +1,49 @@
 #include "main.h"
 
 /**
+  * _pow - calculates the pow of a number
+  * @b: base
+  * @p: power
+  * Return: result
+  */
+
+int _pow(int b, int p)
+{
+	int i, result = 1;
+
+	for (i = 0; i < p; i++)
+	{
+		result *= b;
+	}
+	return (result);
+}
+
+/**
   * print_number - Prints any integer with putchar
-  * @m: Number to prints
+  * @n: Number to prints
   * Return: Nothing
   */
 
-void print_number(int m)
+void print_number(int n)
 {
-	unsigned int n = m;
+	int nod = 0, dup = n;
+	unsigned int first_digit = 0;
 
-	if (n < 0)
+	while ((dup /= 10))
 	{
-		_putchar('-');
-		n = -n;
+		nod++;
 	}
-	if (n >= 10)
+	while (nod >= 0)
 	{
-		print_number(n / 10);
+		if (n < 0)
+		{
+			n *= -1;
+			_putchar('-');
+		}
+		first_digit = n / _pow(10, nod);
+		first_digit %= 10;
+		nod--;
+		_putchar(first_digit + '0');
 	}
-	_putchar((n % 10) + '0');
 }
 
