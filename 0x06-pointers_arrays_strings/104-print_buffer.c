@@ -20,7 +20,7 @@ void print_buffer(char *b, int size)
 		{
 			if (i + j < size)
 			{
-				printf("%02x", (b + i + j));
+				printf("%02x", *(b + i + j));
 			}
 			else
 			{
@@ -35,9 +35,9 @@ void print_buffer(char *b, int size)
 		{
 			if (i + j < size)
 			{
-				if (isprint((b + i + j)))
+				if (isprint(*(b + i + j)))
 				{
-					printf("%c", (b + i + j));
+					printf("%c", *(b + i + j));
 				}
 				else
 				{
