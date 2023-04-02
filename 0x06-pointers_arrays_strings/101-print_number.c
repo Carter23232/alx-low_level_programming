@@ -35,7 +35,7 @@ void print_number(int n)
 		putchar('0');
 		return;
 	}
-	while (abs_n >= _pow(10, nod + 1))
+	while (abs_n >= (unsigned int)_pow(10, nod + 1))
 	{
 		nod++;
 	}
