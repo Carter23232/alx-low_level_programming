@@ -35,13 +35,13 @@ void print_number(int n)
 		putchar('0');
 		return;
 	}
-	while (abs_n >= pow(10, nod + 1))
+	while (abs_n >= _pow(10, nod + 1))
 	{
 		nod++;
 	}
 	while (nod >= 0)
 	{
-		first_digit = abs_n / pow(10, nod);
+		first_digit = abs_n / _pow(10, nod);
 		first_digit %= 10;
 		nod--;
 		_putchar(first_digit + '0');
