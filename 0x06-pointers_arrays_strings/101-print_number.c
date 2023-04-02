@@ -33,17 +33,24 @@ void print_number(int n)
 	{
 		nod++;
 	}
-	while (nod >= 0)
+	if (n != 0)
 	{
-		if (n < 0)
+		while (nod >= 0)
 		{
-			n *= -1;
-			_putchar('-');
+			if (n < 0)
+			{
+				n *= -1;
+				_putchar('-');
+			}
+			first_digit = n / _pow(10, nod);
+			first_digit %= 10;
+			nod--;
+			_putchar(first_digit + '0');
 		}
-		first_digit = n / _pow(10, nod);
-		first_digit %= 10;
-		nod--;
-		_putchar(first_digit + '0');
+	}
+	else
+	{
+		_putchar('0');
 	}
 }
 
