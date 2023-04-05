@@ -9,7 +9,7 @@ int primechk(int n, int i);
  */
 int is_prime_number(int n)
 {
-	return (primechk(n, 1));
+	return (primechk(n, 2));
 }
 
 
