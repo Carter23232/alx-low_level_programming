@@ -2,9 +2,9 @@
 
 int cmp(char *s1, char *s2);
 /**
-  * is_palindrome - Returns if a string is palindrome
-  * @s: the string value to be checked
-  *
+ *wildcmp- Returns if a string is palindrome
+   * @s1: string 1
+ *@s2: second string
   * Return: integer value
   */
 int wildcmp(char *s1, char *s2)
