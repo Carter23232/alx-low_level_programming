@@ -1,6 +1,6 @@
 #include "main.h"
 
-int test(char *s, int size);
+int cmp(char *s, int i);
 
 /**
  *is_palindrome - returns 1 if a string is a palindrome and 0 if not
@@ -10,25 +10,25 @@ int test(char *s, int size);
  */
 int is_palindrome(char *s)
 {
-	return (test(s, (int)strlen(s)));
+	return (cmp(s, 1));
 }
 
 /**
- * test - checks if a string is palindrome.
+ * cmp- checks if a string is palindrome.
  * @s:the string
- * @size: size of string
+ * @i:iterator
  *
  * Return: returns 1 if true 0 otherwise
  */
-int test(char *s, int size)
+int cmp(char *s, int i)
 {
-	if (size == 0 || size == 1)
+	if (*s != s[(int)strlen(s) - i])
 	{
-		return (1);
+		return (0);
 	}
-	if (s[0] == s[size - 1])
+	if (*s != '\0')
 	{
-		return (test(s + 1, size - 2));
+		return (cmp(s + 1, i + 1));
 	}
-	return (0);
+	return (1);
 }
