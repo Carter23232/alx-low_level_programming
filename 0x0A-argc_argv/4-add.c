@@ -7,33 +7,23 @@
  *@argv: array of string
  * Return: Always 0.
  */
+
 int main(int argc, char **argv)
 {
-	int h, i, sum = 0;
+	int i, j, sum = 0;
 
-	for (h = 0; h < argc; h++)
+	for (i = 1; i < argc; i++)
 	{
-		for (i = 1; argv[h][i] != '\0'; i++)
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (isdigit(argv[h][i]))
+			if (!isdigit(argv[i][j]))
 			{
-				sum += atoi(argv[i]);
+				printf("Error\n");
+				return (1);
 			}
-		else
-		{
-			sum = -1;
-			break;
 		}
+		sum += atoi(argv[i]);
 	}
-		if (sum == -1)
-		{
-			printf("Error\n");
-			return (1);
-		}
-		else
-		{
-			printf("%d\n", sum);
-		}
-	}
+	printf("%d\n", sum);
 	return (0);
 }
