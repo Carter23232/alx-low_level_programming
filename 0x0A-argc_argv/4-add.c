@@ -9,34 +9,25 @@
  */
 int main(int argc, char **argv)
 {
-	int h, i, sum = 0;
+	int i, sum = 0;
 
-	for (h = 0; h < argc; h++)
+	for (i = 1; i < argc; i++)
 	{
-		for (i = 1; argv[h][i] != '\0'; i++)
+		if (*argv[i] != '\0' && isdigit(*argv[i]))
 		{
-			if (isdigit(argv[h][i]))
-			{
-				if (argv[h][i] > 0)
-				{
-					sum += atoi(argv[i]);
-				}
-			}
-			else
-			{
-				sum = -1;
-				break;
-			}
-		}
-		if (sum == -1)
-		{
-			printf("Error\n");
-			return (1);
+			sum += atoi(argv[i]);
 		}
 		else
 		{
-			printf("%d\n", sum);
+			sum = -1;
+			break;
 		}
 	}
+        if(sum == -1)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	printf("%d\n", sum);
 	return (0);
 }
