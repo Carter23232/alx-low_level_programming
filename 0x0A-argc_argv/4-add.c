@@ -19,15 +19,15 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			sum = 0;
+			sum = -1;
 			break;
 		}
 	}
-	if (argc > 1 && sum > 0)
+	if (sum == -1)
 	{
-		printf("%d\n", sum);
-		return (0);
+		printf("Error\n");
+		return (1);
 	}
-	printf("Error\n");
-	return (1);
+	printf("%d\n", sum);
+	return (0);
 }
