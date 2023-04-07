@@ -25,14 +25,15 @@ int main(int argc, char **argv)
 			break;
 		}
 	}
-	if (sum == -1)
-	{
-		printf("Error\n");
-		return (1);
-	}
-	else
-	{
-		printf("%d\n", sum);
+		if (sum == -1)
+		{
+			printf("Error\n");
+			return (1);
+		}
+		else
+		{
+			printf("%d\n", sum);
+		}
 	}
 	return (0);
 }
