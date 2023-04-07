@@ -11,11 +11,12 @@
 int main(int argc, char **argv)
 {
 	int c_val[] = {25, 10, 5, 2, 1};
-	int i, num = atoi(argv[1]), counter = 0;
+	int i, num, counter = 0;
 
 	if (argc == 2)
 	{
-		if (num < 0)
+		num = atoi(argv[1]);
+		if (num <= 0)
 		{
 			printf("%d\n", 0);
 		}
