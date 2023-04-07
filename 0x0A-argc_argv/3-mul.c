@@ -12,7 +12,10 @@ int main(int argc, char **argv)
 
 	for (i = 1; i < argc; i++)
 	{
-		prod *= atoi(argv[i]);
+		if (argc < 3)
+		{
+			prod *= atoi(argv[i]);
+		}
 	}
 	printf("%d\n", prod);
 	return (0);
