@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdlib.h>
 /**
  * main - check the code
  *@argc: length of string
@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 
 	for (i = 1; i < argc; i++)
 	{
-		prod *= i;
+		prod *= atoi(argv[i]);
 	}
 	printf("%d\n", prod);
 	return (0);
