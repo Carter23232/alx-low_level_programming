@@ -9,13 +9,11 @@
 char* str_concat(char* s1, char* s2)
 {
 	 char* constr;
+	 const int s1_len = s1 ? strlen(s1) : 0;
+         const int s2_len = s2 ? strlen(s2) : 0;
     if (!s1 && !s2) {
         return NULL;
     }
-
-    
-    const int s1_len = s1 ? strlen(s1) : 0;
-    const int s2_len = s2 ? strlen(s2) : 0;
 
     if (!s1 || !s2) {
         constr = (char*) malloc((s1_len + s2_len + 1) * sizeof(char));
