@@ -6,46 +6,26 @@
  * @s2: second string
  *Return: ptr to concantated string
  */
-char *str_concat(char *s1, char *s2)
+char* str_concat(char* s1, char* s2)
 {
-	char *constr;
+    if (!s1 && !s2) {
+        return NULL;
+    }
 
-	if (s1 == NULL && s2 == NULL)
-	{
-		return ("");
-	}
-	constr = (char *)(malloc((strlen(s1) + strlen(s2)) * sizeof(char) + 1));
-	if (constr != NULL)
-	{
-		strcpy(constr, s1);
-		strcat(constr, s2);
-		return (constr);
-	}
-	if (s2 == NULL)
-	{
-		constr = (char *)(malloc(strlen(s1) * sizeof(char) + 1));
-		if (constr != NULL)
-		{
-			strcpy(constr, s1);
-			return (constr);
-		}
-		else
-		{
-			return (NULL);
-		}
-	}
-	else if (s1 == NULL)
-	{
-		constr = (char *)(malloc(strlen(s2) * sizeof(char) + 1));
-		if (constr != NULL)
-		{
-			strcpy(constr, s2);
-			return (constr);
-		}
-		else
-		{
-			return (NULL);
-		}
-	}
-	return (NULL);
+    char* constr;
+    const int s1_len = s1 ? strlen(s1) : 0;
+    const int s2_len = s2 ? strlen(s2) : 0;
+
+    if (!s1 || !s2) {
+        constr = (char*) malloc((s1_len + s2_len + 1) * sizeof(char));
+    } else {
+        constr = (char*) malloc((s1_len + s2_len + 1) * sizeof(char));
+        if (!constr) {
+            return NULL;
+        }
+        strcpy(constr, s1);
+        strcat(constr, s2);
+    }
+
+    return constr;
 }
