@@ -21,7 +21,7 @@ char *str_concat(char *s1, char *s2)
 		strcat(constr, s2);
 		return (constr);
 	}
-	if (s1 != NULL)
+	if (s2 == NULL)
 	{
 		constr = (char *)(malloc(strlen(s1) * sizeof(char) + 1));
 		if (constr != NULL)
@@ -34,7 +34,7 @@ char *str_concat(char *s1, char *s2)
 			return (NULL);
 		}
 	}
-	else if (s2 != NULL)
+	else if (s1 == NULL)
 	{
 		constr = (char *)(malloc(strlen(s2) * sizeof(char) + 1));
 		if (constr != NULL)
