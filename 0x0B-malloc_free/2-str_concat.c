@@ -6,25 +6,30 @@
  * @s2: second string
  *Return: ptr to concantated string
  */
-char* str_concat(char* s1, char* s2)
+char *str_concat(char *s1, char *s2)
 {
-	 char* constr;
-	 const int s1_len = s1 ? strlen(s1) : 0;
-         const int s2_len = s2 ? strlen(s2) : 0;
     if (!s1 && !s2) {
         return NULL;
     }
 
-    if (!s1 || !s2) {
-        constr = (char*) malloc((s1_len + s2_len + 1) * sizeof(char));
-    } else {
-        constr = (char*) malloc((s1_len + s2_len + 1) * sizeof(char));
-        if (!constr) {
-            return NULL;
-        }
-        strcpy(constr, s1);
-        strcat(constr, s2);
+    int len1 = s1 ? strlen(s1) : 0;
+    int len2 = s2 ? strlen(s2) : 0;
+
+    char *result = (char *) malloc(sizeof(char) * (len1 + len2 + 1));
+
+    if (!result) {
+        return NULL;
     }
 
-    return constr;
+    if (len1 > 0) {
+        memcpy(result, s1, len1);
+    }
+
+    if (len2 > 0) {
+        memcpy(result + len1, s2, len2);
+    }
+
+    result[len1 + len2] = '\0';
+
+    return result;
 }
