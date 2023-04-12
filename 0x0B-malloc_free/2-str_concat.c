@@ -8,32 +8,36 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	int s1_length = 0, s2_length = 0;
-	char *result, *p;
+	char *concat;
 
-	if (s1 != NULL)
-	{
-		s1_length = strlen(s1);
-	}
-	if (s2 != NULL)
-	{
-		s2_length = strlen(s2);
-	}
-	result = (char *)malloc(s1_length + s2_length + 1);
-	if (result == NULL)
+	if (s1 == NULL && s2 == NULL)
 	{
 		return (NULL);
 	}
-	p = result;
-	while (s1 != NULL && *s1 != '\0')
+	if (s1 != NULL && s2 == NULL)
 	{
-		*p++ = *s1++;
+		concat = (char *)(malloc(strlen(s1) * sizeof(char) + 1));
+		if (concat != NULL)
+		{
+			strcpy(concat, s1);
+		}
 	}
-	while (s2 != NULL && *s2 != '\0')
+	else if (s1 == NULL)
 	{
-		*p++ = *s2++;
+		concat = (char *)(malloc(strlen(s2) * sizeof(char) + 1));
+		if (concat != NULL)
+		{
+			strcpy(concat, s2);
+		}
 	}
-	*p = '\0';
-	return (result);
+	else
+	{
+		concat = (char *)(malloc((strlen(s1) + strlen(s2)) * sizeof(char) + 1));
+		if (concat != NULL)
+		{
+			strcpy(concat, s1);
+			strcat(concat, s2);
+		}
+	}
+	return (concat);
 }
-
