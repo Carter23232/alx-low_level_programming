@@ -12,7 +12,12 @@ char *str_concat(char *s1, char *s2)
 
 	if (s1 == NULL && s2 == NULL)
 	{
-		return ("");
+		concat = (char *)(malloc(1 * sizeof(char)));
+		if (concat != NULL)
+		{
+			strcpy(concat, "");
+		}
+		return (concat);
 	}
 	if (s1 != NULL && s2 == NULL)
 	{
