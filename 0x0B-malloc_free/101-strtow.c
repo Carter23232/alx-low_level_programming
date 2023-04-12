@@ -1,9 +1,7 @@
 #include "main.h"
-
 /**
  * word_count - Counts the number of words in a string.
  * @str: The string to count the words of.
- *
  * Return: The number of words in the string.
  */
 int word_count(char *str)
@@ -45,7 +43,6 @@ char **strtow(char *str)
 	words = malloc(sizeof(char *) * (wc + 1));
 	if (words == NULL)
 		return (NULL);
-
 	i = 0;
 	while (i < wc)
 	{
@@ -64,7 +61,6 @@ char **strtow(char *str)
 			free(words);
 			return (NULL);
 		}
-
 		for (j = 0, k = 0; j < len; j++, k++)
 			words[i][k] = str[j];
 		words[i][k] = '\0';
@@ -72,8 +68,6 @@ char **strtow(char *str)
 		i++;
 		str += len;
 	}
-
 	words[i] = NULL;
-
 	return (words);
 }
