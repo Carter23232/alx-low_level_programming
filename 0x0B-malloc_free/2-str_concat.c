@@ -8,30 +8,30 @@
  */
 char *str_concat(char *s1, char *s2)
 {
+    char *s, *p;
+    int i, j;
 
-	
-    if (!s1 && !s2) {
+    i = j = 0;
+
+    while (s1[i]) {
+        ++i;
+    }
+
+    while (s2[j]) {
+        ++j;
+    }
+
+    s = (char*) malloc(i + j + 1);
+    if (!s) {
         return NULL;
     }
 
-    int len1 = s1 ? strlen(s1) : 0;
-    int len2 = s2 ? strlen(s2) : 0;
-
-    char *result = (char *) malloc(sizeof(char) * (len1 + len2 + 1));
-
-    if (!result) {
-        return NULL;
+    p = s;
+    while (*s1) {
+        *p++ = *s1++;
     }
 
-    if (len1 > 0) {
-        memcpy(result, s1, len1);
-    }
+    while ((*p++ = *s2++)) {}
 
-    if (len2 > 0) {
-        memcpy(result + len1, s2, len2);
-    }
-
-    result[len1 + len2] = '\0';
-
-    return result;
+    return s;
 }
