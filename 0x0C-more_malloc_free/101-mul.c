@@ -28,11 +28,11 @@ int is_digit(char *s)
  */
 int _strlen(char *s)
 {
-        int len = 0;
+	int len = 0;
 
-        while (s[len] != '\0')
-                len++;
-        return (len);
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }
 
 /**
@@ -41,11 +41,11 @@ int _strlen(char *s)
  */
 void _puts(char *str)
 {
-        while (*str != '\0')
-        {
-                putchar(*str);
-                str++;
-        }
+	while (*str != '\0')
+	{
+		putchar(*str);
+		str++;
+	}
 }
 
 /**
@@ -55,39 +55,38 @@ void _puts(char *str)
  */
 void mul(char *num1, char *num2)
 {
-        int len1 = _strlen(num1);
-        int len2 = _strlen(num2);
-        int i, j, prod, carry;
-        int *result;
+	int len1 = _strlen(num1);
+	int len2 = _strlen(num2);
+	int i, j, prod, carry;
+	int *result;
 
-        result = calloc(len1 + len2, sizeof(int));
-        if (result == NULL)
-        {
-                _puts("Error\n");
-                exit(98);
-        }
-        for (i = len1 - 1; i >= 0; i--)
-        {
-                carry = 0;
-                for (j = len2 - 1; j >= 0; j--)
-                {
-                        prod = (num1[i] - '0') * (num2[j] - '0') +
-                               result[i + j + 1] + carry;
-                        carry = prod / 10;
-                        result[i + j + 1] = prod % 10;
-                }
-                result[i + j + 1] += carry;
-        }
-        i = 0;
-        while (i < len1 + len2 - 1 && result[i] == 0)
-                i++;
-        while (i < len1 + len2)
-        {
-                putchar(result[i] + '0');
-                i++;
-        }
-        putchar('\n');
-        free(result);
+	result = calloc(len1 + len2, sizeof(int));
+	if (result == NULL)
+	{
+		_puts("Error\n");
+		exit(98);
+	}
+	for (i = len1 - 1; i >= 0; i--)
+	{
+		carry = 0;
+		for (j = len2 - 1; j >= 0; j--)
+		{
+			prod = (num1[i] - '0') * (num2[j] - '0') + result[i + j + 1] + carry;
+			carry = prod / 10;
+			result[i + j + 1] = prod % 10;
+		}
+		result[i + j + 1] += carry;
+	}
+	i = 0;
+	while (i < len1 + len2 - 1 && result[i] == 0)
+		i++;
+	while (i < len1 + len2)
+	{
+		putchar(result[i] + '0');
+		i++;
+	}
+	putchar('\n');
+	free(result);
 }
 
 /**
@@ -99,11 +98,11 @@ void mul(char *num1, char *num2)
  */
 int main(int argc, char **argv)
 {
-        if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
-        {
-                _puts("Error\n");
-                return (98);
-        }
-        mul(argv[1], argv[2]);
-        return (0);
+	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
+	{
+		_puts("Error\n");
+		return (98);
+	}
+	mul(argv[1], argv[2]);
+	return (0);
 }
