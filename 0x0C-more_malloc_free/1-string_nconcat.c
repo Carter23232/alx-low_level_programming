@@ -9,70 +9,23 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *costr;
+	size_t s1_len, s2_len;
 
-	if (s1 == NULL && s2 == NULL)
-	{
-		costr = malloc(sizeof(*costr));
-		if (costr != NULL)
-		{
-			strcpy(costr, "");
-		}
-		return (costr);
-	}
 	if (s1 == NULL)
-	{
-		costr = malloc(sizeof(*costr));
-		strcpy(costr, "");
-	}
-	else
-	{
-		costr = malloc(sizeof(*costr) * strlen(s1));
-		if (costr != NULL)
-		{
-			strcpy(costr, s1);
-		}
-		else
-		{
-			return (NULL);
-		}
-	}
+		s1 = "";
 	if (s2 == NULL)
-	{
-		costr = realloc(costr, sizeof(*costr) * strlen(costr) + 1 + 1);
-		if (costr == NULL)
-		{
-			return (NULL);
-		}
-		strcat(costr, "");
-	}
-	else
-	{
-		if (n >= strlen(s2))
-		{
-			costr = realloc(costr, sizeof(*costr) * strlen(s2) + 1);
-			if (costr == NULL)
-			{
-				return (NULL);
-			}
-			else
-			{
-				strcat(costr, s2);
-			}
-		}
-		else
-		{
-			costr = realloc(costr, sizeof(costr) * n + 1);
-			 if (costr == NULL)
-			 {
-				 return (NULL);
-			 }
-			 else
-			 {
-				 strncat(costr, s2, n);
-			 }
+		s2 = "";
 
-		}
-	}
-	strcat(costr, "\n");
+	s1_len = strlen(s1);
+	s2_len = strnlen(s2, n);
+
+	costr = malloc(s1_len + s2_len + 1);
+	if (costr == NULL)
+		return (NULL);
+
+	memcpy(costr, s1, s1_len);
+	memcpy(costr + s1_len, s2, s2_len);
+	costr[s1_len + s2_len] = '\0';
+
 	return (costr);
 }
