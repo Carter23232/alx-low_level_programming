@@ -8,7 +8,6 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	int *mem;
-	int i;
 
 	if (nmemb == 0 || size == 0)
 	{
@@ -19,11 +18,6 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < (int)nmemb; i++)
-	{
-		mem[i] = 0;
-	}
-	i++;
-	mem[i] = '\0';
+	memset(mem, 0, nmemb * size);
 	return ((void *)mem);
 }
