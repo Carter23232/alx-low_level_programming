@@ -23,10 +23,7 @@ char *create_array(unsigned int size, char c)
 	}
 	else
 	{
-		for (i = 0; i < (int)size; i++)
-		{
-			str[i] = c;
-		}
+		memset(str, c, size);
 	}
 	return (str);
 }
