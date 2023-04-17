@@ -7,6 +7,6 @@ void print_dog(struct dog *d)
 {
 	if (d != NULL)
 	{
-		printf("%s\n%0.6f\n%s\n", d->name, d->age, d->owner);
+		printf("Name: %s\nAge: %0.6f\nOwner: %s\n", d->name, d->age, d->owner);
 	}
 }
