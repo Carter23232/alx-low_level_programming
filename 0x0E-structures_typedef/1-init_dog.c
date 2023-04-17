@@ -10,7 +10,7 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	if (strlen(name) > 0 && strlen(owner) > 0 && age > 0)
+	if (d != NULL)
 	{
 		d->name = name;
 		d->age = age;
