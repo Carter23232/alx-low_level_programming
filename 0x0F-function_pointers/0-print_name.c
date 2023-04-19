@@ -7,7 +7,7 @@
  */
 void print_name(char *name, void (*f)(char *))
 {
-	if (strlen(name) != 0)
+	if (f != NULL)
 		f(name);
 	return;
 }
