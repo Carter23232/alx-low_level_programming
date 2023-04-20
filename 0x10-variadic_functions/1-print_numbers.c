@@ -18,12 +18,14 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		for (i = 0; i < n; i++)
 		{
 			print_number(va_arg(arg, int));
+			putchar('\n');
 			for (j = 0; j < strlen(separator); j++)
 			{
 				putchar(separator[j]);
 			}
 		}
 		va_end(arg);
+		putchar('\n');
 
 	}
 }
