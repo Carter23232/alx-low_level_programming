@@ -18,10 +18,12 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		for (i = 0; i < n; i++)
 		{
 			print_number(va_arg(arg, int));
-			putchar('\n');
-			for (j = 0; j < strlen(separator); j++)
+			if (i < n - 1)
 			{
-				putchar(separator[j]);
+				for (j = 0; j < strlen(separator); j++)
+				{
+					putchar(separator[j]);
+				}
 			}
 		}
 		va_end(arg);
@@ -40,12 +42,12 @@ void print_number(int n)
 
 	if (n < 0)
 	{
-		_putchar('-');
+		putchar('-');
 		num = -num;
 	}
 
 	if ((num / 10) > 0)
 		print_number(num / 10);
 
-	_putchar((num % 10) + '0');
+	putchar((num % 10) + '0');
 }
