@@ -12,13 +12,13 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list arg;
 	unsigned int i, j;
 
-	if (separator != NULL)
+	if (n != 0)
 	{
 		va_start(arg, n);
 		for (i = 0; i < n; i++)
 		{
 			print_number(va_arg(arg, int));
-			if (i < n - 1)
+			if (separator != NULL && i < n - 1)
 			{
 				for (j = 0; j < strlen(separator); j++)
 				{
@@ -28,7 +28,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		}
 		va_end(arg);
 		putchar('\n');
-
 	}
 }
 
