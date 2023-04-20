@@ -1,39 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <udis86.h>
 
-/**
-  * main - Entry point to program
-  * @argc: counter
-  * @argv: Argument
-  *
-  * Return: ...
-  */
 int main(int argc, char **argv)
 {
-	ud_t ud_obj;
-	int input_length = 0;
+    if (argc != 2) {
+        printf("Error\n");
+        return 1;
+    }
 
-	if (argc == 2)
-	{
-		input_length = atoi(argv[1]);
+    int bytes = atoi(argv[1]);
+    if (bytes <= 0) {
+        printf("Error\n");
+        return 2;
+    }
 
-		if (input_length < 0)
-		{
-			printf("Error\n");
-			exit(2);
-		}
+    unsigned char *ptr = (unsigned char *)main;
 
-		ud_unit(&ud_obj);
-		ud_set_input_buffer(&ud_obj, argv[1], input_length);
-		ud_set_mode(&ud_obj, 64);
-		ud_set_syntax(&ud_obj, UD_SYN_INTEL);
+    for (int i = 0; i < bytes; i++) {
+        printf("%02x", *(ptr + i));
+    }
 
-
-		while (ud_disassemble(&ud_obj))
-		{
-			printf("\t%s\n", ud_insn_hex(&ud_obj));
-		}
-	}
-	return (0);
+    printf("\n");
+    return 0;
 }
