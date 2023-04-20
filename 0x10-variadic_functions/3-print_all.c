@@ -16,7 +16,7 @@ void print_all(const char * const format, ...)
 
 	size = _strlen(format, str);
 	va_start(arg, format);
-	while (counter < size)
+	while (counter <= size)
 	{
 		j = 0;
 		switch (format[counter])
