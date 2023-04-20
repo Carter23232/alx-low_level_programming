@@ -10,22 +10,19 @@
 
 int main(int argc, char **argv)
 {
-	int (*oprt)(int, int);
+	int (*fptr)(int, int);
 
-	if (argc != 4)
+	fptr = get_op_func(argv[2]);
+	if (argc == 4)
 	{
-		printf("Error\n");
-		exit(98);
+		if (fptr == 0)
+		{
+			printf("Error\n");
+			exit(99);
+		}
+		printf("%d\n", fptr(atoi(argv[1]), atoi(argv[3])));
+		return (0);
 	}
-
-	oprt = get_op_func(argv[2]);
-
-	if (!oprt)
-	{
-		printf("Error\n");
-		exit(99);
-	}
-
-	printf("%d\n", oprt(atoi(argv[1]), atoi(argv[3])));
-	return (0);
+	printf("Error\n");
+	exit(98);
 }
