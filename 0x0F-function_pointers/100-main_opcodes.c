@@ -12,21 +12,25 @@
 int main(int argc, char **argv)
 {
 	int i;
-
-	if (argc != 2) {
-		printf("Error\n");
-		return 1;
-	}
-
 	int num_bytes = atoi(argv[1]);
-	if (num_bytes < 0) {
+
+	if (argc != 2)
+	{
 		printf("Error\n");
-		return 2;
+		return (1);
 	}
 
-	for (i = 0; i < num_bytes; i++) {
-		printf("%02x%c", *((unsigned char *)main + i), i == num_bytes - 1 ? '\n' : ' ');
+	if (num_bytes < 0)
+	{
+		printf("Error\n");
+		return (2);
 	}
 
-	return 0;
+	for (i = 0; i < num_bytes; i++)
+	{
+		printf("%02x%c", *((unsigned char *)main + i), i == num_bytes -
+		       1 ? '\n' : ' ');
+	}
+
+	return (0);
 }
