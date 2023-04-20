@@ -12,13 +12,14 @@
 int main(int argc, char **argv)
 {
 	int i;
-	int num_bytes = atoi(argv[1]);
+	int num_bytes;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
+	num_bytes = atoi(argv[1]);
 
 	if (num_bytes < 0)
 	{
