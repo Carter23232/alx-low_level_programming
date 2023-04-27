@@ -1,9 +1,6 @@
 #include "lists.h"
 
-/**
- *tells the compiler to execute
- *this file first before the main
-*/
+/*tells the compiler to execute this file first before the main*/
 
 void first(void) __attribute__ ((constructor));
 /**
@@ -13,6 +10,6 @@ void first(void) __attribute__ ((constructor));
   */
 void first(void)
 {
-	printf("Hello from the constructor function!\n");
-	printf("This function is executed before main.\n");
+	printf("You're beat! and yet, you must allow,\n");
+	printf("I bore my house upon my back!\n");
 }
