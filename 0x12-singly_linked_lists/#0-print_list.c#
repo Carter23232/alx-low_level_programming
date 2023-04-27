@@ -1,0 +1,24 @@
+#include "list.h"
+/**
+  * print_list - Prints all elements of a list
+  * @h: A linked list
+  *
+  * Return: The number of nodes
+  */
+size_t printLinkedList(const Node *head)
+{
+    size_t nodeCount = 0;
+
+    while (head != NULL)
+    {
+        if (head->data == NULL)
+            printf("[0] (nil)\n");
+        else
+            printf("[%d] %s\n", head->dataLength, head->data);
+
+        head = head->next;
+        nodeCount++;
+    }
+
+    return nodeCount;
+}
