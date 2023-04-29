@@ -11,7 +11,7 @@
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-        list_t *last, *current;
+	list_t *last, *current;
 
 	if (str != NULL)
 	{
@@ -24,7 +24,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		}
 	}
 	else
-		return NULL;
+		return (NULL);
 	if (*head != NULL)
 	{
 		current = *head;
