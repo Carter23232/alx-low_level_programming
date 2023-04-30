@@ -4,7 +4,6 @@
   * delete_nodeint_at_index - deletes the node at index index
   * @head: pointer to head
   * @index: index to delete
-  *
   * Return: 1 on sucess and -1 otherwise
   */
 
@@ -19,9 +18,9 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		{
 			nxt = *head;
 			*head = (*head)->next;
-		        free(nxt);
+			free(nxt);
 			return (1);
-	        }
+		}
 
 		nxt = *head;
 		while (nxt != NULL)
