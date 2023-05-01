@@ -7,28 +7,33 @@
   */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t  i = 0, bool = head > head->next ? 1 : 0;
+	size_t  i = 0, j = 0, visited_chk = 0;
+	const listint_t *visited_nodes[1024];
 
 	while (head != NULL)
 	{
-		if (bool)
+		if (!visited_chk)
 		{
-			if (head <= head->next)
-			{
-				break;
-			}
 			printf("[%p] %d\n", (void *)head, head->n);
-			i++;
+			visited_nodes[i++] = head;
+			head = head->next;
 		}
+
 		else
 		{
-			if (head >= head->next)
+			printf("-> [%p] %d\n", (void *)head, head->n);
+			break;
+		}
+
+		while (j < i)
+		{
+			if (visited_nodes[j] == head)
 			{
+				visited_chk = 1;
 				break;
 			}
-			printf("[%p] %d\n", (void *)(head), head->n);
+			j++;
 		}
-		head = head->next;
 	}
 	return (i);
 }
