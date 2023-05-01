@@ -4,56 +4,37 @@
  * free_listint_safe - free a listint_t linked list
  * @h: pointer to head
  * Return: size
- */
+*/
 size_t free_listint_safe(listint_t **h)
 {
-    size_t i = 0, j;
-    const listint_t *visited_nodes[1024];
-    listint_t *ptr;
-
-    int visited_chk = 1;
+    size_t i = 0;
+    const size_t max_nodes = 1024;
+    const listint_t *visited_nodes[max_nodes];
+    listint_t *current, *tmp;
 
     while (*h != NULL)
     {
-        if (!visited_chk)
-        {
-            visited_nodes[i++] = *h;
-            ptr = *h;
-            *h = (*h)->next;
-            free(ptr);
-        }
-        else
-        {
-            visited_chk = 0;
-        }
+        current = *h;
+        *h = (*h)->next;
 
-        if (!visited_chk)
+        for (size_t j = 0; j < i && j < max_nodes; j++)
         {
-            j = 0;
-            while (j < i)
+            if (visited_nodes[j] == current)
             {
-                if (visited_nodes[j] == *h)
-                {
-                    visited_chk = 1;
-                    break;
-                }
-                j++;
+                free(current);
+                current = NULL;
+                break;
             }
         }
 
-        if (*h == NULL)
+        if (current != NULL)
         {
-            break;
+            visited_nodes[i++] = current;
+            free(current);
         }
     }
 
-    if (*h != NULL)
-    {
-        ptr = *h;
-        *h = NULL;
-        free(ptr);
-        i++;
-    }
+    *h = NULL;
 
     return i;
 }
