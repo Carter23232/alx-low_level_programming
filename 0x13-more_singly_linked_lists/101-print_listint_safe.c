@@ -13,7 +13,7 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		if (bool)
 		{
-			if(head <= head->next)
+			if (head <= head->next)
 			{
 				break;
 			}
@@ -22,7 +22,7 @@ size_t print_listint_safe(const listint_t *head)
 		}
 		else
 		{
-			if(head >= head->next)
+			if (head >= head->next)
 			{
 				break;
 			}
