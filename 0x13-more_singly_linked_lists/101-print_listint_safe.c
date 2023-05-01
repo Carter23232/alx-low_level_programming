@@ -25,6 +25,7 @@ size_t print_listint_safe(const listint_t *head)
 			break;
 		}
 
+		j = 0;
 		while (j < i)
 		{
 			if (visited_nodes[j] == head)
