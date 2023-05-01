@@ -7,7 +7,7 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t  i = 0, j, visited_chk = 1;
+	size_t  i = 0, j = 0, visited_chk = 1;
 	const listint_t *visited_nodes[1024];
 	listint_t *ptr;
 
@@ -38,11 +38,17 @@ size_t free_listint_safe(listint_t **h)
 				j++;
 			}
 		}
+		if (*h == NULL)
+		{
+			break;
+		}
 	}
 	if (*h != NULL)
 	{
-		free(*h);
+		ptr = *h;
 		*h = NULL;
+		free(ptr);
+		i++;
 	}
-	return (i);
+        return (i);
 }
