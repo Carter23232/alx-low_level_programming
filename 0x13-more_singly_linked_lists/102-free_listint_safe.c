@@ -1,10 +1,10 @@
 #include "lists.h"
 
 /**
-   * free_listint_safe - free a listint_t linked list
-   * @h: pointer to head
-   * Return: size
-   */
+* free_listint_safe - free a listint_t linked list
+* @h: pointer to head
+* Return: size
+*/
 size_t free_listint_safe(listint_t **h)
 {
 	size_t  i = 0, j = 0, visited_chk = 0;
