@@ -7,48 +7,53 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t  i = 0, j = 0, visited_chk = 1;
-	const listint_t *visited_nodes[1024];
-	listint_t *ptr;
+    size_t i = 0, j;
+    const listint_t *visited_nodes[1024];
+    listint_t *ptr;
 
-	while (*h != NULL)
-	{
-		if (!visited_chk)
-		{
-			visited_nodes[i++] = *h;
-			ptr = *h;
-			*h = (*h)->next;
-			free(ptr);
-		}
+    int visited_chk = 1;
 
-		else
-		{
-			visited_chk = 0;
-		}
-		if (!visited_chk)
-		{
-			j = 0;
-			while (j < i)
-			{
-				if (visited_nodes[j] == *h)
-				{
-					visited_chk = 1;
-					break;
-				}
-				j++;
-			}
-		}
-		if (*h == NULL)
-		{
-			break;
-		}
-	}
-	if (*h != NULL)
-	{
-		ptr = *h;
-		*h = NULL;
-		free(ptr);
-		i++;
-	}
-        return (i);
+    while (*h != NULL)
+    {
+        if (!visited_chk)
+        {
+            visited_nodes[i++] = *h;
+            ptr = *h;
+            *h = (*h)->next;
+            free(ptr);
+        }
+        else
+        {
+            visited_chk = 0;
+        }
+
+        if (!visited_chk)
+        {
+            j = 0;
+            while (j < i)
+            {
+                if (visited_nodes[j] == *h)
+                {
+                    visited_chk = 1;
+                    break;
+                }
+                j++;
+            }
+        }
+
+        if (*h == NULL)
+        {
+            break;
+        }
+    }
+
+    if (*h != NULL)
+    {
+        ptr = *h;
+        *h = NULL;
+        free(ptr);
+        i++;
+    }
+
+    return i;
 }
