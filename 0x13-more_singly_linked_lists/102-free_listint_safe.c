@@ -7,34 +7,38 @@
 */
 size_t free_listint_safe(listint_t **h)
 {
-    size_t i = 0;
-    const size_t max_nodes = 1024;
-    const listint_t *visited_nodes[max_nodes];
-    listint_t *current, *tmp;
+    size_t i = 0, j = 0, visited_chk = 0;
+    listint_t **visited_nodes = malloc(sizeof(listint_t *) * 1024);
+    listint_t *ptr;
 
     while (*h != NULL)
     {
-        current = *h;
-        *h = (*h)->next;
-
-        for (size_t j = 0; j < i && j < max_nodes; j++)
+        if (!visited_chk)
         {
-            if (visited_nodes[j] == current)
-            {
-                free(current);
-                current = NULL;
-                break;
-            }
+            visited_nodes[i++] = *h;
+            ptr = *h;
+            *h = (*h)->next;
+            free(ptr);
+        }
+        else
+        {
+            free(*h);
+            *h = NULL;
+            break;
         }
 
-        if (current != NULL)
+        j = 0;
+        while (j < i)
         {
-            visited_nodes[i++] = current;
-            free(current);
+            if (visited_nodes[j] == *h)
+            {
+                visited_chk = 1;
+            }
+            j++;
         }
     }
-
+    free(*h);
     *h = NULL;
-
-    return i;
+    free(visited_nodes);
+    return (i);
 }
