@@ -7,32 +7,13 @@
   */
 listint_t *find_listint_loop(listint_t *head)
 {
-	size_t  i = 0, j = 0, visited_chk = 0;
-	const listint_t *visited_nodes[1024];
-
 	while (head != NULL)
 	{
-		if (!visited_chk)
+		if (head->next == head->next->next)
 		{
-			visited_nodes[i++] = head;
-			head = head->next;
+			return (head->next);
 		}
-
-		else
-		{
-			return (head);
-		}
-
-		j = 0;
-		while (j < i)
-		{
-			if (visited_nodes[j] == head)
-			{
-				visited_chk = 1;
-				break;
-			}
-			j++;
-		}
+		head = head->next;
 	}
 	return (NULL);
 }
