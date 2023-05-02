@@ -23,7 +23,7 @@ listint_t *find_listint_loop(listint_t *head)
 		{
 			printf("-> [%p] %d\n", (void *)head, head->n);
 			printf("Loop starts at [%p] %d\n", (void *)head, head->n);
-		        return (head);
+			return (head);
 		}
 
 		j = 0;
