@@ -14,15 +14,12 @@ listint_t *find_listint_loop(listint_t *head)
 	{
 		if (!visited_chk)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
 			visited_nodes[i++] = head;
 			head = head->next;
 		}
 
 		else
 		{
-			printf("-> [%p] %d\n", (void *)head, head->n);
-			printf("Loop starts at [%p] %d\n", (void *)head, head->n);
 			return (head);
 		}
 
