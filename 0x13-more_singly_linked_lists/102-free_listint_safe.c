@@ -10,6 +10,9 @@ size_t free_listint_safe(listint_t **h)
 	size_t counts = 0;
 	listint_t *cur, *nxt;
 
+	if (h == NULL || *h == NULL)
+		return (0);
+	
 	cur = *h;
         *h = NULL;
 
