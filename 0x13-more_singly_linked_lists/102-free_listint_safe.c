@@ -7,28 +7,28 @@
 */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t counts = 0;
-	listint_t *cur, *nxt;
+    size_t count = 0;
+    listint_t *current, *next;
 
-	if (h == NULL || *h == NULL)
-		return (0);
-	
-	cur = *h;
-        *h = NULL;
+    if (h == NULL || *h == NULL) {
+        return 0;
+    }
 
-	while (cur != NULL)
+    current = *h;
+    *h = NULL;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        count++;
+
+        if (next >= current)
 	{
-		nxt= cur->next;
-		if(nxt <= cur)
-		{
-			free(cur);
-			counts++;
-		}
-		else
-		{
-			break;
-		}
-		cur = nxt;
-	}
-        return (counts);
+            break;
+        }
+
+        current = next;
+    }
+
+    return count;
 }
