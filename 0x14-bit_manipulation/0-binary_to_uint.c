@@ -17,24 +17,22 @@ unsigned int binary_to_uint(const char *b)
 	{
 		if  (*b == '1' || *b == '0')
 			counter++;
-		else return (0);
+		else
+			return (0);
 		b++;
 	}
-	while (counter >= 0)
+	while (counter > 0)
 	{
 		counter--;
-		while (*b != '\0')
-		{
-			value += i_pow(2, counter) *todigit(*b);
-		}
+		value += i_pow(2, counter) *todigit(*b);
 		b++;
 	}
 	return (value);
 }
 int i_pow (int num, int counter)
 {
-	int res = num;
-	while (counter < 0)
+	int res = 1;
+	while (counter > 0)
 	{
 		res *= num;
 		counter--;
