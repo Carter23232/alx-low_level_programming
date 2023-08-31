@@ -21,10 +21,10 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		b++;
 	}
-	while (counter > 0)
+	while (counter >= 0)
 	{
 		counter--;
-		value += i_pow(2, counter) *todigit(*b);
+		value += i_pow(2, counter) * todigit(*b);
 		b++;
 	}
 	return (value);
@@ -32,6 +32,8 @@ unsigned int binary_to_uint(const char *b)
 int i_pow (int num, int counter)
 {
 	int res = 1;
+	if (counter == 0)
+		return (1);
 	while (counter > 0)
 	{
 		res *= num;
