@@ -26,11 +26,7 @@ unsigned int binary_to_uint(const char *b)
 	{
 		counter--;
 		value += i_pow(2, counter) * todigit(*b);
-<<<<<<< HEAD
 		c_b++;
-=======
-		b++;
->>>>>>> refs/remotes/origin/main
 	}
 	return (value);
 }
