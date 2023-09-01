@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 int i_pow(int num, int counter);
@@ -63,5 +62,10 @@ int todigit(char b)
 {
 	if (b == '1')
 		return (1);
+	return (0);
+}
+
+int main()
+{
 	return (0);
 }
