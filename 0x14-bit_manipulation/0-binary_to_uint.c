@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "main.h"
+
 int i_pow(int num, int counter);
 int todigit(char b);
 
