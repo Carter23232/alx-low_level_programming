@@ -10,6 +10,7 @@ int todigit(char b);
 unsigned int binary_to_uint(const char *b)
 {
 	int counter = 0, value = 0;
+	const char *c_b = b;
 
 	if (b == NULL)
 		return (0);
@@ -24,8 +25,8 @@ unsigned int binary_to_uint(const char *b)
 	while (counter > 0)
 	{
 		counter--;
-		value += i_pow(2, counter) *todigit(*b);
-		b++;
+		value += i_pow(2, counter) * todigit(*b);
+		c_b++;
 	}
 	return (value);
 }
