@@ -1,11 +1,12 @@
 #include <stdio.h>
+int i_pow(int num, int counter);
+int todigit(char b);
+
 /**
  * binary_to_uint - free a listint_t linked list
  * @b: pointer to head
  * Return: unsigned number
 */
-int i_pow (int num, int counter);
-int todigit(char b);
 
 unsigned int binary_to_uint(const char *b)
 {
@@ -14,7 +15,7 @@ unsigned int binary_to_uint(const char *b)
 
 	if (b == NULL)
 		return (0);
-	while(*b != '\0')
+	while (*b != '\0')
 	{
 		if  (*b == '1' || *b == '0')
 			counter++;
@@ -30,9 +31,17 @@ unsigned int binary_to_uint(const char *b)
 	}
 	return (value);
 }
-int i_pow (int num, int counter)
+
+/**
+ * i_pow - return the powers of a number
+ * @num: base
+ * @counter: power
+ * Return: value
+*/
+int i_pow(int num, int counter)
 {
 	int res = 1;
+
 	if (counter == 0)
 		return (1);
 	while (counter > 0)
@@ -43,9 +52,14 @@ int i_pow (int num, int counter)
 	return (res);
 }
 
+/**
+ * todigit - converts char to int
+ * @b: char variable
+ * Return: value
+*/
 int todigit(char b)
 {
 	if (b == '1')
 		return (1);
-        return (0);
+	return (0);
 }
