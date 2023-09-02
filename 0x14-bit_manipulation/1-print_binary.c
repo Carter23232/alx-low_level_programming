@@ -16,7 +16,7 @@ void print_binary(unsigned long int n)
 		bit = n >> bit_position;
 		if (1 & bit)
 			_putchar('1');
-		else if (bit > 0)
+		else
 			_putchar('0');
 		bit_position--;
 	}
