@@ -7,11 +7,11 @@
 void print_binary(unsigned long int n)
 {
 	int bit_position = (sizeof(n) * 8) - 1;
-	unsigned long int bit;
+	unsigned long int bit = 0;
 
-	if (n <= 0)
+	if (n == 0)
 		_putchar('0');
-	while (bit_position > 0)
+	while (bit_position >= 0)
 	{
 		bit = n >> bit_position;
 		if (1 & bit)
