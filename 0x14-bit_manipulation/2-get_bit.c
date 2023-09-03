@@ -1,12 +1,13 @@
 #include "main.h"
 #include <stdlib.h>
+int *binary(unsigned long int n);
 /**
  * get_bit - returns the value of a bit at a given index
- * @n : number
- * @index : index
- * return : returns the index
+ * @n: number
+ * @index: index
+ * Return: returns the index
  */
-int *binary(unsigned long int n);
+
 int get_bit(unsigned long int n, unsigned int index)
 {
 	if (binary(n)[31 - index] == 0 || binary(n)[31 - index] == 1)
@@ -17,8 +18,8 @@ int get_bit(unsigned long int n, unsigned int index)
 
 /**
  * binary - converts numbers to an array of binary
- * @n : number
- * return : returns array of binary
+ * @n: number
+ * Return: returns array of binary
  */
 int *binary(unsigned long int n)
 {
