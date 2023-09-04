@@ -3,44 +3,42 @@
 #include <stdlib.h>
 
 /**
- * read_textfile - prints text from a file
- *
- * @filename: name of the file
- * @letters: number of characters to read
- *
- * Return: actual number of letters read, 0 if end of file
- */
+ * read_textfile - returns the value of a bit at a given index
+ * @filename: name of fd to read and print
+ * @letters: number of letters it should read and print
+ * Return: returns number of letters it cold read and print
+*/
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int file;
-	int length, wrotechars;
-	char *buf;
+	int fd;
+	int _read, written;
+	char *buffer;
 
 	if (filename == NULL || letters == 0)
 		return (0);
-	buf = malloc(sizeof(char) * (letters));
-	if (buf == NULL)
+	buffer = malloc(sizeof(char) * (letters));
+	if (buffer == NULL)
 		return (0);
 
-	file = open(filename, O_RDONLY);
-	if (file == -1)
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
 	{
-		free(buf);
+		free(buffer);
 		return (0);
 	}
-	length = read(file, buf, letters);
-	if (length == -1)
+	_read = read(fd, buffer, letters);
+	if (_read == -1)
 	{
-		free(buf);
-		close(file);
+		free(buffer);
+		close(fd);
 		return (0);
 	}
 
-	wrotechars = write(STDOUT_FILENO, buf, length);
+	written = write(STDOUT_FILENO, buffer, _read);
 
-	free(buf);
-	close(file);
-	if (wrotechars != length)
+	free(buffer);
+	close(fd);
+	if (written != _read)
 		return (0);
-	return (length);
+	return (_read);
 }
