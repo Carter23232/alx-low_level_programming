@@ -9,19 +9,25 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	ssize_t num = 0;
+	ssize_t read_ = 0, written;
 	char *buffer = malloc(sizeof(char) * letters);
 
-	if (buffer == NULL || filename == NULL)
+	if (filename == NULL || letters == 0 || buffer == NULL)
 		return (0);
 
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	while ((num = read(fd, buffer, letters)))
+	read_ = read(fd, buffer, letters);
+	if (fd == -1 || read_ == -1)
 	{
-		if (write(STDOUT_FILENO, buffer, letters) == -1)
-			return (0);
+		free(buffer);
+		close(fd);
+		return (0);
 	}
-	return (num);
+	written = write(STDOUT_FILENO, buffer, letters);
+	if (written == -1 || written != read_)
+		return (0);
+	close(fd);
+	free(buffer);
+	buffer = NULL;
+	return (read_);
 }
