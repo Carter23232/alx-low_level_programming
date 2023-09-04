@@ -1,33 +1,46 @@
-#include "main.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
 /**
- * read_textfile - returns the value of a bit at a given index
- * @filename: name of file to read and print
- * @letters: number of letters it should read and print
- * Return: returns number of letters it cold read and print
+ * read_textfile - prints text from a file
+ *
+ * @filename: name of the file
+ * @letters: number of characters to read
+ *
+ * Return: actual number of letters read, 0 if end of file
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
-	ssize_t read_ = 0, written;
-	char *buffer = malloc(sizeof(char) * letters);
+	int file;
+	int length, wrotechars;
+	char *buf;
 
-	if (filename == NULL || letters == 0 || buffer == NULL)
+	if (filename == NULL || letters == 0)
+		return (0);
+	buf = malloc(sizeof(char) * (letters));
+	if (buf == NULL)
 		return (0);
 
-	fd = open(filename, O_RDONLY);
-	read_ = read(fd, buffer, letters);
-	if (fd == -1 || read_ == -1)
+	file = open(filename, O_RDONLY);
+	if (file == -1)
 	{
-		free(buffer);
-		close(fd);
+		free(buf);
 		return (0);
 	}
-	written = write(STDOUT_FILENO, buffer, letters);
-	if (written == -1 || written != read_)
+	length = read(file, buf, letters);
+	if (length == -1)
+	{
+		free(buf);
+		close(file);
 		return (0);
-	close(fd);
-	free(buffer);
-	buffer = NULL;
-	return (read_);
+	}
+
+	wrotechars = write(STDOUT_FILENO, buf, length);
+
+	free(buf);
+	close(file);
+	if (wrotechars != length)
+		return (0);
+	return (length);
 }
