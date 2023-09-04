@@ -1,7 +1,4 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-
+#include "main.h"
 /**
  * read_textfile - returns the value of a bit at a given index
  * @filename: name of fd to read and print
