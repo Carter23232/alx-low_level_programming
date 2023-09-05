@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	const char *E_msg_arg = "Usage: cp file_from file_to\n",
 		*E_src = "Error: Can't read from file ", *E_dest = "Error: Can't write to ";
-	char *buf[1024];
+	char *buf[BUFSIZ];
 	int dest, src, _read = 1, written;
 	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
