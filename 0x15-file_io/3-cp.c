@@ -21,20 +21,20 @@ int main(int argc, char *argv[])
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, permissions);
 	if (src == -1)
 	{
-		dprintf(STDERR_FILENO, "%s %s %s", E_src, argv[2], "\n"), exit(98);
+		dprintf(STDERR_FILENO, "%s %s %s", E_src, argv[1], "\n"), exit(98);
 	}
 	if (dest == -1)
 	{
-		dprintf(STDERR_FILENO, "%s %s %s", E_dest, argv[3], "\n"), exit(99);
+		dprintf(STDERR_FILENO, "%s %s %s", E_dest, argv[2], "\n"), exit(99);
 	}
 	while (_read)
 	{
 		_read = read(src, buf, 1024);
 		if (_read == -1)
-			dprintf(STDERR_FILENO, "%s %s %s", E_src, argv[2], "\n"), exit(98);
-		written = write(dest, buf, 1024);
+			dprintf(STDERR_FILENO, "%s %s %s", E_src, argv[1], "\n"), exit(98);
+		written = write(dest, buf, BUFSIZ);
 		if (written == -1 || written != _read)
-			dprintf(STDERR_FILENO, "%s %s %s", E_dest, argv[3], "\n"), exit(99);
+			dprintf(STDERR_FILENO, "%s %s %s", E_dest, argv[2], "\n"), exit(99);
 	}
 	if (close(src) == -1)
 	{
