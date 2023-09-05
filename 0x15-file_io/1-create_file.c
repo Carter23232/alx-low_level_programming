@@ -8,7 +8,7 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	int new_file, written;
+	int new_file, written, closed;
 
 	if (filename == NULL)
 		return (-1);
@@ -18,8 +18,8 @@ int create_file(const char *filename, char *text_content)
 	{
 		written = write(new_file, text_content, strlen(text_content));
 	}
-	close(new_file);
-	if (written)
+	closed = close(new_file);
+	if (written && closed != -1)
 		return (1);
 	return (-1);
 }
