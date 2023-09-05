@@ -8,20 +8,17 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	int fd, exist, written;
+	int new_file, written;
 
 	if (filename == NULL)
 		return (-1);
-	exist = open(filename, O_RDONLY);
-	if (exist != -1)
-		truncate(filename, strlen(text_content));
-	if (exist == -1)
-		fd = creat(filename, 600);
-	if (text_content != NULL)
+	new_file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+
+	if (new_file != -1 && text_content != NULL)
 	{
-		written = write(fd, text_content, strlen(text_content));
+		written = write(new_file, text_content, strlen(text_content));
 	}
-	close(fd);
+	close(new_file);
 	if (written)
 		return (1);
 	return (-1);
