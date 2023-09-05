@@ -8,23 +8,21 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	int fd, exist, truncated, writtentr, written;
+	int fd, exist, written;
 
 	if (filename == NULL)
 		return (-1);
 	exist = open(filename, O_RDONLY);
 	if (exist != -1)
-		truncated = truncate(filename, strlen(text_content));
+		truncate(filename, strlen(text_content));
 	if (exist == -1)
 		fd = creat(filename, 600);
 	if (text_content != NULL)
 	{
-		if (truncated != -1)
-			writtentr = write(fd, text_content, strlen(text_content));
 		written = write(fd, text_content, strlen(text_content));
 	}
 	close(fd);
-	if (written || writtentr)
+	if (written)
 		return (1);
 	return (-1);
 
