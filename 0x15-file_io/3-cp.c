@@ -7,7 +7,7 @@
 */
 int main(int argc, char *argv[])
 {
-	char *buf[1204];
+	char buf[1204];
 	int dest, src, _read, written;
 	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
