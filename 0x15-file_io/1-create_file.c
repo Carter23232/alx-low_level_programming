@@ -1,34 +1,36 @@
 #include "main.h"
 /**
- * create_file - creates a file and puts text in it
- * with 600 perms (do not change if it exists)
- *
- * @filename: name for fd
- * @text_content: text to put into fd
- *
- * Return: 1 on success, -1 on failure
- */
+ * create_file - creates a file
+ * @filename: name of fd to read and print
+ * @text_content: text to be written
+ * Return: returns 1 on success and -1 on failure
+*/
+
 int create_file(const char *filename, char *text_content)
 {
-	int fd;
-	int written = 0, inlen = 0;
-	char *ptr;
+	int fd, exist, truncated, writtentr, written, len;
 
 	if (filename == NULL)
 		return (-1);
-
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
-	if (fd == -1)
-		return (-1);
-
+	while (*text_content != '\0')
+	{
+		len++;
+		text_content++;
+	}
+	exist = open(filename, O_RDONLY);
+	if (exist != -1)
+		truncated = truncate(filename, len);
+	if (exist == -1)
+		fd = creat(filename, 600);
 	if (text_content != NULL)
 	{
-		for (inlen = 0, ptr = text_content; *ptr; ptr++)
-			inlen++;
-		written = write(fd, text_content, inlen);
+		if (truncated != -1)
+			writtentr = write(fd, text_content, len);
+		written = write(fd, text_content, len);
 	}
+	close(fd);
+	if (written || writtentr)
+		return (1);
+	return (-1);
 
-	if (close(fd) == -1 || inlen != written)
-		return (-1);
-	return (1);
 }
