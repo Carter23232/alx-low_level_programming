@@ -9,13 +9,14 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd, exist, truncated, writtentr, written, len;
+	char *cpy = text_content;
 
 	if (filename == NULL)
 		return (-1);
-	while (*text_content != '\0')
+	while (*cpy != '\0')
 	{
 		len++;
-		text_content++;
+		cpy++;
 	}
 	exist = open(filename, O_RDONLY);
 	if (exist != -1)
