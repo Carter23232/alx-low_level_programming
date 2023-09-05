@@ -8,26 +8,20 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	int fd, exist, truncated, writtentr, written, len;
-	char *cpy = text_content;
+	int fd, exist, truncated, writtentr, written;
 
 	if (filename == NULL)
 		return (-1);
-	while (*cpy != '\0')
-	{
-		len++;
-		cpy++;
-	}
 	exist = open(filename, O_RDONLY);
 	if (exist != -1)
-		truncated = truncate(filename, len);
+		truncated = truncate(filename, strlen(text_content));
 	if (exist == -1)
 		fd = creat(filename, 600);
 	if (text_content != NULL)
 	{
 		if (truncated != -1)
-			writtentr = write(fd, text_content, len);
-		written = write(fd, text_content, len);
+			writtentr = write(fd, text_content, strlen(text_content));
+		written = write(fd, text_content, strlen(text_content));
 	}
 	close(fd);
 	if (written || writtentr)
