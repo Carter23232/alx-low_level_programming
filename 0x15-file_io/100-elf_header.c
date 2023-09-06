@@ -1,19 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <elf.h>
+#include "main.h"
+
+/**
+ * print_elf_header - prints elf-header
+ * @header: pointer to file
+ */
 
 void print_elf_header(const Elf32_Ehdr *header)
 {
-	int i;
+	int i = 0;
 
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++)
-		printf("%02X ", header->e_ident[i]);
+	while (i < EI_NIDENT)
+		printf("%02X ", header->e_ident[i]), i++;
 	printf("\n");
-
 	printf("  Class:                             %u-bit\n", header->e_ident[EI_CLASS] == ELFCLASS32 ? 32 : 64);
 	printf("  Data:                              %s\n", header->e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" : "unknown");
 	printf("  Version:                           %u (current)\n", header->e_ident[EI_VERSION]);
@@ -32,16 +32,25 @@ void print_elf_header(const Elf32_Ehdr *header)
 	printf("  Size of section headers:           %u (bytes)\n", header->e_shentsize);
 	printf("  Number of section headers:         %u\n", header->e_shnum);
 	printf("  Section header string table index: %u\n", header->e_shstrndx);
+
 }
 
+/**
+ * main - entry level to program
+ * @argc: Number of command-line arguments.
+ * @argv: Array of command-line arguments.
+ *
+ * Return: 0 on success, other values on failure.
+ */
 int main(int argc, char *argv[])
 {
 	int fd;
 	Elf32_Ehdr elf_header;
+	ssize_t bytes_read;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: %s <elf_file>\n", argv[0]);
+		dprintf(STDERR_FILENO, "Usage: %s <elf_file>\n", argv[0]);
 		exit(1);
 	}
 
@@ -52,7 +61,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	ssize_t bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
+	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
 	if (bytes_read == -1)
 	{
 		perror("Failed to read ELF header");
