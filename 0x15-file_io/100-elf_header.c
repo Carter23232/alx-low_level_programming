@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 		exit(1);
 		}
 
-	is_elf(&elf_header);
+	/**is_elf(&elf_header);**/
 
 	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
 	if (bytes_read == -1)
