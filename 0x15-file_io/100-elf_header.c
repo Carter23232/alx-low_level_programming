@@ -91,14 +91,14 @@ int main(int argc, char *argv[])
 		perror("Failed to open file");
 		exit(1);
 	}
-/**
+
 	if ((lseek(fd, 0, SEEK_SET) == -1))
 	{
 		perror("lseek error");
 		close(fd);
 		exit(1);
 		}
-**/
+
 	is_elf(&elf_header);
 
 	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
