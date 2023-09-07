@@ -46,23 +46,25 @@ void print_elf_header(const Elf32_Ehdr *header)
 	printf("  Version:                           %u (current)\n", header->e_ident[EI_VERSION]);
 	printf("  OS/ABI:                            %s\n", OSABI[header->e_ident[EI_OSABI]]);
 	printf("  ABI Version:                       %u\n", header->e_ident[EI_ABIVERSION]);
-	printf("  Type:                              0x%X\n", header->e_type);
+	printf("  Type:                              0x%X \n", header->e_type);
 	printf("  Entry point address:               0x%X\n", header->e_entry);
 }
 int is_elf(const Elf32_Ehdr *header)
 {
-	int i = 0, counter = 0;
-	char chk[] = " ELF";
+	int index;
 
-	while (i < (EI_NIDENT - 11))
+	for (index = 0; index < 4; index++)
 	{
-		if (chk[i] == header->e_ident[i])
-			counter++;
-		i++;
+		if (header->e_ident[index] != 127 &&
+		    header->e_ident[index] != 'E' &&
+		    header->e_ident[index] != 'L' &&
+		    header->e_ident[index] != 'F')
+		{
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			exit(98);
+		}
 	}
-	if (counter == 4)
-		return (1);
-	return (0);
+	return (1);
 }
 /**
  * main - entry level to program
@@ -89,12 +91,16 @@ int main(int argc, char *argv[])
 		perror("Failed to open file");
 		exit(1);
 	}
+/**
 	if ((lseek(fd, 0, SEEK_SET) == -1))
 	{
 		perror("lseek error");
 		close(fd);
 		exit(1);
-	}
+		}
+**/
+	is_elf(&elf_header);
+
 	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
 	if (bytes_read == -1)
 	{
@@ -108,7 +114,7 @@ int main(int argc, char *argv[])
 		close(fd);
 		exit(1);
 	}
-	is_elf(&elf_header);
+
 	print_elf_header(&elf_header);
 
 	close(fd);
