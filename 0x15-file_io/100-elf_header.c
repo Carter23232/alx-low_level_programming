@@ -49,6 +49,12 @@ void print_elf_header(const Elf32_Ehdr *header)
 	printf("  Type:                              0x%X \n", header->e_type);
 	printf("  Entry point address:               0x%X\n", header->e_entry);
 }
+
+/**
+ * is_elf - check if file is elf
+ * @header: pointer to file
+ * Return : 0 if not otherwise 1
+ */
 int is_elf(const Elf32_Ehdr *header)
 {
 	int index;
@@ -61,7 +67,7 @@ int is_elf(const Elf32_Ehdr *header)
 		    header->e_ident[index] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-			exit(98);
+			return (0);
 		}
 	}
 	return (1);
@@ -97,9 +103,9 @@ int main(int argc, char *argv[])
 		perror("lseek error");
 		close(fd);
 		exit(1);
-		}
+	}
 
-	/**is_elf(&elf_header);**/
+	is_elf(&elf_header);
 
 	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
 	if (bytes_read == -1)
@@ -114,9 +120,7 @@ int main(int argc, char *argv[])
 		close(fd);
 		exit(1);
 	}
-
 	print_elf_header(&elf_header);
-
 	close(fd);
 	return (0);
 }
