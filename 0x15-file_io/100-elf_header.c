@@ -3,13 +3,13 @@
  * print_elf_header - prints elf-header
  * @header: pointer to file
  */
-void print_elf_header(const Elf32_Ehdr *header)
+void print_elf_header(const Elf64_Ehdr *header)
 {
 	int i = 0;
 	const char *OSABI[] = {
 		"No extensions or unspecified", "Hewlett-Packard HP-UX",
 		"NetBSD", "GNU", "Linux", "Sun Solaris", "AIX", "IRIX", "FreeBSD",
-		 "Compaq TRU32 UNIX", "Novell Modesto", "Open BSD", "Open VMS",
+		 "Compaq TRU64 UNIX", "Novell Modesto", "Open BSD", "Open VMS",
 		"Hewlett-Packard Non-Stop Kernel", "Amiga Research OS",
 		"The FenixOS highly scalable multi-core OS", "Nuxi CloudABI",
 		"Stratus Technologies OpenVOS", "Architecture-specific value range"
@@ -23,10 +23,10 @@ void print_elf_header(const Elf32_Ehdr *header)
 	switch (header->e_ident[EI_CLASS])
 	{
 	case 1:
-		printf("  Class:                             ELF32\n");
+		printf("  Class:                             ELF64\n");
 		break;
 	case 2:
-		printf("  Class:                             ELF32\n");
+		printf("  Class:                             ELF64\n");
 		break;
 	default:
 		printf("  Class:                             invalid\n");
@@ -55,7 +55,7 @@ void print_elf_header(const Elf32_Ehdr *header)
  * @header: pointer to file
  * Return: 0 if not otherwise 1
  */
-int is_elf(const Elf32_Ehdr *header, int fd)
+int is_elf(const Elf64_Ehdr *header, int fd)
 {
 	int index;
 	char elf_magic[] = {0x7F, 'E', 'L', 'F'};
@@ -81,7 +81,7 @@ int is_elf(const Elf32_Ehdr *header, int fd)
 int main(int argc, char *argv[])
 {
 	int fd;
-	Elf32_Ehdr elf_header;
+	Elf64_Ehdr elf_header;
 	ssize_t bytes_read;
 
 	if (argc != 2)
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
+	bytes_read = read(fd, &elf_header, sizeof(Elf64_Ehdr));
 	if (bytes_read == -1)
 	{
 		perror("Failed to read ELF header");
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	if (bytes_read != sizeof(Elf32_Ehdr))
+	if (bytes_read != sizeof(Elf64_Ehdr))
 	{
 		fprintf(stderr, "Incomplete ELF header read\n");
 		close(fd);
