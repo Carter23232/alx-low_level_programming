@@ -1,22 +1,4 @@
-#include <elf.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-void checkElfHeader(unsigned char *e_ident);
-void printMagicNumbers(unsigned char *e_ident);
-void printElfClass(unsigned char *e_ident);
-void printDataEncoding(unsigned char *e_ident);
-void printElfVersion(unsigned char *e_ident);
-void printOsAbi(unsigned char *e_ident);
-void printAbiVersion(unsigned char *e_ident);
-void printElfType(unsigned int e_type, unsigned char *e_ident);
-void printEntryPoint(unsigned long int e_entry, unsigned char *e_ident);
-void closeFile(int fd);
-
+#include "main.h"
 /**
  * checkElfHeader - Checks if a file is an ELF file.
  * @e_ident: A pointer to an array containing the ELF magic numbers.
@@ -277,17 +259,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s <elf-file>\n", argv[0]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Usage: %s <elf-file>\n", argv[0]), exit(98);
 	}
-
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (header == NULL)
 	{
@@ -295,7 +274,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Memory allocation failed\n");
 		exit(98);
 	}
-
 	bytes_read = read(fd, header, sizeof(Elf64_Ehdr));
 	if (bytes_read == -1)
 	{
@@ -304,7 +282,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Cannot read file %s\n", argv[1]);
 		exit(98);
 	}
-
 	checkElfHeader(header->e_ident);
 	printf("ELF Header:\n");
 	printMagicNumbers(header->e_ident);
@@ -315,9 +292,6 @@ int main(int argc, char *argv[])
 	printAbiVersion(header->e_ident);
 	printElfType(header->e_type, header->e_ident);
 	printEntryPoint(header->e_entry, header->e_ident);
-
-	free(header);
-	closeFile(fd);
-
+	free(header), closeFile(fd);
 	return (0);
 }

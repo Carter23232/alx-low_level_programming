@@ -40,6 +40,38 @@ include CMakeFiles/rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = /home/gadget/Desktop/ALX/alx-low_level_programming/0x15-file_io/cmake-build-debug-event-trace/
+# =============================================================================
+# Object build statements for EXECUTABLE target new_target
+
+
+#############################################
+# Order-only phony target for new_target
+
+build cmake_object_order_depends_target_new_target: phony || CMakeFiles/new_target.dir
+
+build CMakeFiles/new_target.dir/100-elf_header.c.o: C_COMPILER__new_target_unscanned_Debug /home/gadget/Desktop/ALX/alx-low_level_programming/0x15-file_io/100-elf_header.c || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles/new_target.dir/100-elf_header.c.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles/new_target.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target new_target
+
+
+#############################################
+# Link the executable new_target
+
+build new_target: C_EXECUTABLE_LINKER__new_target_Debug CMakeFiles/new_target.dir/100-elf_header.c.o
+  FLAGS = -g
+  LINK_FLAGS = -rdynamic
+  OBJECT_DIR = CMakeFiles/new_target.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = new_target
+  TARGET_PDB = new_target.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -74,7 +106,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/gadget/Desktop/ALX/alx-low_level_programming/0x15-file_io/cmake-build-debug-event-trace
 
-build all: phony
+build all: phony new_target
 
 # =============================================================================
 # Unknown Build Time Dependencies.
