@@ -1,0 +1,2 @@
+/home/gadget/Desktop/ALX/alx-low_level_programming/0x15-file_io/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gadget/Desktop/ALX/alx-low_level_programming/0x15-file_io/cmake-build-debug/CMakeFiles/rebuild_cache.dir

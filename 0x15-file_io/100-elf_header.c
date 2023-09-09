@@ -9,7 +9,7 @@ void print_elf_header(const Elf32_Ehdr *header)
 	const char *OSABI[] = {
 		"No extensions or unspecified", "Hewlett-Packard HP-UX",
 		"NetBSD", "GNU", "Linux", "Sun Solaris", "AIX", "IRIX", "FreeBSD",
-		 "Compaq TRU64 UNIX", "Novell Modesto", "Open BSD", "Open VMS",
+		 "Compaq TRU32 UNIX", "Novell Modesto", "Open BSD", "Open VMS",
 		"Hewlett-Packard Non-Stop Kernel", "Amiga Research OS",
 		"The FenixOS highly scalable multi-core OS", "Nuxi CloudABI",
 		"Stratus Technologies OpenVOS", "Architecture-specific value range"
@@ -26,7 +26,7 @@ void print_elf_header(const Elf32_Ehdr *header)
 		printf("  Class:                             ELF32\n");
 		break;
 	case 2:
-		printf("  Class:                             ELF64\n");
+		printf("  Class:                             ELF32\n");
 		break;
 	default:
 		printf("  Class:                             invalid\n");
@@ -47,26 +47,25 @@ void print_elf_header(const Elf32_Ehdr *header)
 	printf("  OS/ABI:                            %s\n", OSABI[header->e_ident[EI_OSABI]]);
 	printf("  ABI Version:                       %u\n", header->e_ident[EI_ABIVERSION]);
 	printf("  Type:                              0x%X \n", header->e_type);
-	printf("  Entry point address:               0x%X\n", header->e_entry);
+	printf("  Entry point address:               0x%lX\n", header->e_entry);
 }
 
 /**
  * is_elf - check if file is elf
  * @header: pointer to file
- * Return : 0 if not otherwise 1
+ * Return: 0 if not otherwise 1
  */
-int is_elf(const Elf32_Ehdr *header)
+int is_elf(const Elf32_Ehdr *header, int fd)
 {
 	int index;
+	char elf_magic[] = {0x7F, 'E', 'L', 'F'};
 
 	for (index = 0; index < 4; index++)
 	{
-		if (header->e_ident[index] != 127 &&
-		    header->e_ident[index] != 'E' &&
-		    header->e_ident[index] != 'L' &&
-		    header->e_ident[index] != 'F')
+		if ((char)header->e_ident[index] != elf_magic[index])
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			close(fd);
 			return (0);
 		}
 	}
@@ -105,8 +104,6 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	is_elf(&elf_header);
-
 	bytes_read = read(fd, &elf_header, sizeof(Elf32_Ehdr));
 	if (bytes_read == -1)
 	{
@@ -114,13 +111,15 @@ int main(int argc, char *argv[])
 		close(fd);
 		exit(1);
 	}
+
 	if (bytes_read != sizeof(Elf32_Ehdr))
 	{
 		fprintf(stderr, "Incomplete ELF header read\n");
 		close(fd);
 		exit(1);
 	}
-	print_elf_header(&elf_header);
+	if (is_elf(&elf_header, fd))
+		print_elf_header(&elf_header);
 	close(fd);
 	return (0);
 }
