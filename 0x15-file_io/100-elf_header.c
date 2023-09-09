@@ -23,31 +23,31 @@ void print_elf_header(const Elf64_Ehdr *header)
 	switch (header->e_ident[EI_CLASS])
 	{
 	case 1:
-		printf("  Class:                             ELF64\n");
+		printf("  Class: ELF32\n");
 		break;
 	case 2:
-		printf("  Class:                             ELF64\n");
+		printf("  Class: ELF64\n");
 		break;
 	default:
-		printf("  Class:                             invalid\n");
+		printf("  Class: invalid\n");
 	}
 
 	switch (header->e_ident[EI_DATA])
 	{
 	case 1:
-		printf("  Data:                              2's complement, little endian\n");
+		printf("  Data: 2's complement, little endian\n");
 		break;
 	case 2:
-		printf("  Data:                              2's complement, Big endian\n");
+		printf("  Data: 2's complement, Big endian\n");
 		break;
 	default:
-		printf("  Data:                              invalid\n");
+		printf("  Data: invalid\n");
 	}
-	printf("  Version:                           %u (current)\n", header->e_ident[EI_VERSION]);
-	printf("  OS/ABI:                            %s\n", OSABI[header->e_ident[EI_OSABI]]);
-	printf("  ABI Version:                       %u\n", header->e_ident[EI_ABIVERSION]);
-	printf("  Type:                              0x%X \n", header->e_type);
-	printf("  Entry point address:               0x%lX\n", header->e_entry);
+	printf("  Version: %u (current)\n", header->e_ident[EI_VERSION]);
+	printf("  OS/ABI: %s\n", OSABI[header->e_ident[EI_OSABI]]);
+	printf("  ABI Version: %u\n", header->e_ident[EI_ABIVERSION]);
+	printf("  Type: 0x%X \n", header->e_type);
+	printf("  Entry point address: 0x%lX\n", header->e_entry);
 }
 
 /**
