@@ -17,35 +17,46 @@ void print_elf_header(const Elf64_Ehdr *header)
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
 	while (i < EI_NIDENT)
-		printf("%02X ", header->e_ident[i]), i++;
+	{
+		printf("%02X ", header->e_ident[i]);
+		i++;
+		if (i == EI_NIDENT - 1)
+			printf("\n");
+		else
+			printf(" ");
+	}
+
 	printf("\n");
 
 	switch (header->e_ident[EI_CLASS])
 	{
-	case 1:
-		printf("  Class: ELF32\n");
+	case ELFCLASSNONE:
+		printf("none\n");
 		break;
-	case 2:
-		printf("  Class: ELF64\n");
+	case ELFCLASS32:
+		printf("CLASS: ELF32\n");
+		break;
+	case ELFCLASS64:
+		printf("CLASS: ELF64\n");
 		break;
 	default:
-		printf("  Class: invalid\n");
+		printf("<unknown: %x>\n", header->e_ident[EI_CLASS]);
 	}
 
 	switch (header->e_ident[EI_DATA])
 	{
-	case 1:
+	case ELFDATA2LSB:
 		printf("  Data: 2's complement, little endian\n");
 		break;
-	case 2:
+	case ELFDATA2MSB:
 		printf("  Data: 2's complement, Big endian\n");
 		break;
 	default:
-		printf("  Data: invalid\n");
+		printf("  Data: <unknown: %x>\n", header->e_ident[EI_CLASS]);
 	}
-	printf("  Version: %u (current)\n", header->e_ident[EI_VERSION]);
+	printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
 	printf("  OS/ABI: %s\n", OSABI[header->e_ident[EI_OSABI]]);
-	printf("  ABI Version: %u\n", header->e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
 	printf("  Type: 0x%X \n", header->e_type);
 	printf("  Entry point address: 0x%lX\n", header->e_entry);
 }
