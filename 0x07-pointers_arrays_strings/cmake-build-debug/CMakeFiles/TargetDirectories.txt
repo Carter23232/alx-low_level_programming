@@ -1,0 +1,3 @@
+/home/gadget/Desktop/ALX/alx-low_level_programming/0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/0x07_pointers_arrays_strings.dir
+/home/gadget/Desktop/ALX/alx-low_level_programming/0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gadget/Desktop/ALX/alx-low_level_programming/0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/rebuild_cache.dir
