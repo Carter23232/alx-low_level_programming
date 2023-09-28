@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="0x13_more_singly_linked_lists" targetName="0x13_more_singly_linked_lists" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bb48eef8-a1cb-4bef-8352-1e98c6cbcf8a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/0x07-pointers_arrays_strings.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/cache-v2-69c6ae8b840088ea0827.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-783f20374ac947a8b325.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b3976bb88c595fdb4bdd.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/index-2023-09-11T15-51-40-0162.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/target-0x07_pointers_arrays_strings-Debug-295dfb45ded0878b30c3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-ab6bc179ddbddbdb0d31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/3.26.4/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/3.26.4/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/build.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0x07-pointers_arrays_strings/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0x15-file_io/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../0x15-file_io/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="2.1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2VG1Yn4mGZ6QQmsLQc7J1rDt3sY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/gadget/Desktop/ALX/alx-low_level_programming/0x15-file_io/100-elf_header.c",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C/C++",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="0x13_more_singly_linked_lists" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="0x13_more_singly_linked_lists" TARGET_NAME="0x13_more_singly_linked_lists" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="0x13_more_singly_linked_lists" RUN_TARGET_NAME="0x13_more_singly_linked_lists">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb48eef8-a1cb-4bef-8352-1e98c6cbcf8a" name="Changes" comment="" />
+      <created>1694447652791</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694447652791</updated>
+      <workItem from="1694447653838" duration="171000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
