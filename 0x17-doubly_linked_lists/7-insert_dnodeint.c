@@ -50,6 +50,8 @@ dlistint_t *add_anypos(dlistint_t **head, unsigned int idx, const int n)
 			n_data->prev = cur;
 			n_data->next = temp;
 			temp->prev = n_data;
+			if (temp)
+				temp->prev = n_data;
 		}
 		cur = cur->next;
 		index++;
