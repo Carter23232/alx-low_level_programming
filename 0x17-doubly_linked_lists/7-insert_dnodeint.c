@@ -13,7 +13,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	size_t len = dlen(*h);
 
-	if (!*h || idx > len - 1)
+	if (idx > len - 1)
 		return (NULL);
 	if (idx == 0 || len == 0)
 		return (add_dnodeint(h, n));
