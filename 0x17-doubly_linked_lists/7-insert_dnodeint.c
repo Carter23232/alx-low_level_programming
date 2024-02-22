@@ -13,11 +13,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	size_t len = dlen(*h);
 
-	if (!*h)
+	if (!*h || idx > len - 1)
 		return (NULL);
-	if (idx == 0)
+	if (idx == 0 || len == 0)
 		return (add_dnodeint(h, n));
-	if (idx == (len + 1))
+	if (idx == len - 1)
 		return (add_dnodeint_end(h, n));
 	return (add_anypos(h, idx, n));
 }
@@ -50,8 +50,7 @@ dlistint_t *add_anypos(dlistint_t **head, unsigned int idx, const int n)
 			n_data->prev = cur;
 			n_data->next = temp;
 			temp->prev = n_data;
-			if (temp)
-				temp->prev = n_data;
+			temp->prev = n_data;
 		}
 		cur = cur->next;
 		index++;
