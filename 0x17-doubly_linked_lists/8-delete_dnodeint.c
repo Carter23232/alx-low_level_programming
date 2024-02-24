@@ -9,13 +9,25 @@ size_t dlen(const dlistint_t *h);
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *cur = *head;
-	unsigned int counter = 0;
+	int counter = 0;
 	size_t len = dlen(*head);
-
 	if (index > len - 1 || !(*head))
 		return (-1);
 	while (cur)
 	{
+		if (index == 0)
+		{
+			*head = cur->next;
+			free(cur);
+			break;
+		}
+		if (index == len - 1)
+		{
+			cur->prev->next = NULL;
+			free(cur);
+			break;
+
+		}
 		if (counter == index - 1)
 		{
 			free(cur->next);
@@ -27,24 +39,4 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		counter++;
 	}
 	return (1);
-}
-
-
-/**
- * dlen - doubly linked list len
- * @h: head of list
- * Return: 0 if none or len
- */
-size_t dlen(const dlistint_t *h)
-{
-	size_t len = 0;
-
-	if (!h)
-		return (0);
-	while (h)
-	{
-		h = h->next;
-		len++;
-	}
-	return (len);
 }
