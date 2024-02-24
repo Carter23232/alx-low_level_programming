@@ -1,4 +1,7 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
 size_t dlen(const dlistint_t *h);
 /**
 * delete_dnodeint_at_index - delete node in doubly linked list
@@ -8,7 +11,7 @@ size_t dlen(const dlistint_t *h);
 */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *cur = *head;
+	dlistint_t *cur = *head, *temp;
 	unsigned int counter = 0;
 	size_t len = dlen(*head);
 
@@ -19,21 +22,25 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		if (index == 0)
 		{
 			*head = cur->next;
+			if (*head)
+				(*head)->prev = NULL;
 			free(cur);
 			break;
 		}
-		if (index == len - 1)
+		else if (index == len - 1)
 		{
 			cur->prev->next = NULL;
 			free(cur);
 			break;
 
 		}
-		if (counter == index - 1)
+		else if (counter == index - 1)
 		{
-			free(cur->next);
-			cur->next = cur->next->next;
-			cur->next->next->prev = cur;
+			temp = cur->next;
+			cur->next = temp->next;
+			if (temp->next)
+				temp->next->prev = cur;
+			free(temp);
 			break;
 		}
 		cur = cur->next;
