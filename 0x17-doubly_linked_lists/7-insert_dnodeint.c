@@ -1,4 +1,7 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
 dlistint_t *add_anypos(dlistint_t **head, unsigned int idx, const int n);
 size_t dlen(const dlistint_t *h);
 /**
@@ -54,7 +57,7 @@ dlistint_t *add_anypos(dlistint_t **head, unsigned int idx, const int n)
 		cur = cur->next;
 		index++;
 	}
-	return (*head);
+	return (n_data);
 }
 /**
  * dlen - doubly linked list len
