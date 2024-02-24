@@ -41,3 +41,21 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	}
 	return (1);
 }
+/**
+ * dlen - doubly linked list len
+ * @h: head of list
+ * Return: 0 if none or len
+ */
+size_t dlen(const dlistint_t *h)
+{
+	size_t len = 0;
+
+	if (!h)
+		return (0);
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	return (len);
+}
