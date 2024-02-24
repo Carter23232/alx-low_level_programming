@@ -27,13 +27,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			free(cur);
 			break;
 		}
-		else if (index == len - 1)
-		{
-			cur->prev->next = NULL;
-			free(cur);
-			break;
 
-		}
 		else if (counter == index - 1)
 		{
 			temp = cur->next;
@@ -42,6 +36,13 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 				temp->next->prev = cur;
 			free(temp);
 			break;
+		}
+		else if (index == len - 1)
+		{
+			cur->prev->next = NULL;
+			free(cur);
+			break;
+
 		}
 		cur = cur->next;
 		counter++;
