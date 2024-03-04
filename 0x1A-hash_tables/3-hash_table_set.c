@@ -2,49 +2,50 @@
 
 /**
  * hash_table_set - adds an element to the hash table.
- * @ht: hashtable
+ * @ht: hash table
  * @key: key to insert
- * @value: VValue to insert
- * Return:1 if succeeds or 0 o/w
+ * @value: value to insert
+ * Return: 1 if succeeds, 0 otherwise
  */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned int  index;
+	unsigned int index;
 	hash_node_t *new_node = NULL, *temp;
 
 	if (!key || !ht)
 		return (0);
 
 	index = key_index((const unsigned char *)key, ht->size);
-	new_node = malloc(sizeof(hash_node_t));
 
-	if (new_node)
+	temp = ht->array[index];
+	while (temp != NULL)
 	{
-		new_node->key = malloc(sizeof(char) * (strlen(key) + 1));
-		new_node->value = malloc(sizeof(char) * (strlen(value) + 1));
-
-		if (!new_node->key || !new_node->value)
+		if (strcmp(temp->key, key) == 0)
 		{
-			free(new_node->key);
-			free(new_node->value);
-			free(new_node);
-			return (0);
+			free(temp->value);
+			temp->value = strdup(value);
+			return (1);
 		}
-
-		strcpy(new_node->key, key);
-		new_node->value = strdup(value);
+		temp = temp->next;
 	}
-	else
+
+	new_node = malloc(sizeof(hash_node_t));
+	if (!new_node)
 		return (0);
 
-	if (ht->array[index] != NULL)
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
+	if (!new_node->key || !new_node->value)
 	{
-		temp = ht->array[index];
-		ht->array[index] = new_node;
-		new_node->next = temp;
+		free(new_node->key);
+		free(new_node->value);
+		free(new_node);
+		return (0);
 	}
-	else
-		ht->array[index] = new_node;
+
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
+
 	return (1);
 }
