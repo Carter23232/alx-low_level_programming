@@ -20,7 +20,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	while (size)
 	{
 		if (n_hT)
-			n_hT->array = NULL;
+			n_hT->array[size] = NULL;
 		size--;
 	}
 	return (n_hT);
