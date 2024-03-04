@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * hash_djb2 - implementing the djb2 algorithm
+ * key_index - index of hash_table
  * @key: hash key
  * @size: size
  * Return:hash index
