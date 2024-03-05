@@ -1,13 +1,13 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_print - prints hash_table
+ * hash_table_delete - del hash_table
  * @ht: hash table
  */
 void hash_table_delete(hash_table_t *ht)
 {
 	unsigned long int i = 0;
-	hash_node_t *temp, * next;
+	hash_node_t *temp, *next;
 
 	if (!ht)
 		return;
