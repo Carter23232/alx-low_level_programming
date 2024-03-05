@@ -9,4 +9,6 @@ int main()
 	hash_table_set(new, "colour", "Black");
 	hash_table_print(new);
 	hash_table_delete(new);
+
+	return 0;
 }
